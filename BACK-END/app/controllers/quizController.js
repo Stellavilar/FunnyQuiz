@@ -55,5 +55,24 @@ module.exports = quizController = {
     }
    },
 
+   /**Find by level */
+   findByLevel: async (req,res) => {
+    try {
+        const id = req.params.id;
+        if(!id) {
+         return res.status('403').send({"erreur": "Il manque un paramètre pour effectuer la demande"});
+        }
+        const quiz = await Quiz.findByLevel(id);
+        if(quiz == false) {
+         return res.send({"error": "Pas de résultat trouvé"});
+     }
+     return res.send(quiz);
+    }
+    catch (error) {
+     console.log (error);
+     res.send(error);
+ }
+},
+
 
 };

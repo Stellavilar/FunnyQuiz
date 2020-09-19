@@ -79,8 +79,22 @@ module.exports = class Quiz {
                 return {"message": "Pas de résultats"};
             }
                 return result.rows;
-            
-          
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+    /**Find quiz by level */
+    static async findByLevel(id) {
+        try {
+            const query = `SELECT * FROM "quiz" WHERE level_id=$1`;
+            const values = [id];
+            const result = await db.query(query,values);
+            if(result.rowCount == 0) {
+                return {"message": "Pas de résultats"};
+            }
+                return result.rows;
         }
         catch (error) {
             console.log(error);
