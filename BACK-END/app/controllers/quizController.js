@@ -35,4 +35,25 @@ module.exports = quizController = {
            res.send(error);
        }
    },
+
+   /**Find by tag */
+   findByTag: async (req,res) => {
+       try {
+           const id = req.params.id;
+           if(!id) {
+            return res.status('403').send({"erreur": "Il manque un paramètre pour effectuer la demande"});
+           }
+           const quiz = await Quiz.findByTag(id);
+           if(quiz == false) {
+            return res.send({"error": "Pas de résultat trouvé"});
+        }
+        return res.send(quiz);
+       }
+       catch (error) {
+        console.log (error);
+        res.send(error);
+    }
+   },
+
+
 };

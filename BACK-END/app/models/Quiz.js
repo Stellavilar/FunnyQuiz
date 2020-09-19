@@ -69,5 +69,24 @@ module.exports = class Quiz {
         }
     }
 
+    /**Find Quiz by tag */
+    static async findByTag(id) {
+        try {
+            const query = `SELECT * FROM "quiz" WHERE tag_id=$1`;
+            const values = [id];
+            const result = await db.query(query,values);
+            if(result.rowCount == 0) {
+                return {"message": "Pas de résultats"};
+            }
+                return result.rows;
+            
+          
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
 
 };
