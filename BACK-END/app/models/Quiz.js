@@ -51,5 +51,23 @@ module.exports = class Quiz {
         }
     }
 
+    /**Find Quiz by id */
+    static async findByPk(id) {
+        try {
+            const query = 'SELECT * FROM "quiz" WHERE id=$1';
+            const values = [id];
+            const result = await db.query(query,values);
+            if(result.rowCount == 1) {
+                return result.rows[0];
+            }else{
+                return {"message": "Pas de résultats"};
+            }
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
 
 };
