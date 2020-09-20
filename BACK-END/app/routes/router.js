@@ -16,4 +16,10 @@ const tagController = require ('../controllers/tagController');
 router.get('/tags', tagController.findAll);
 router.get('/tags/:id', tagController.findByPk);
 
+/**LevelS Routes */
+const levelController = require('../controllers/levelController');
+
+router.get('/levels', levelController.findAll);
+router.get('/levels/:id', levelController.findByPk);
+
 module.exports = router;
