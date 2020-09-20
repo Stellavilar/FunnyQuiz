@@ -101,6 +101,6 @@ module.exports = class Quiz {
             res.send(error)
         }
     }
-
+    
 
 };
