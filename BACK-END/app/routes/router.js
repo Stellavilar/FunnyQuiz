@@ -14,5 +14,6 @@ router.get('/quizzes/level/:id', quizController.findByLevel);
 const tagController = require ('../controllers/tagController');
 
 router.get('/tags', tagController.findAll);
+router.get('/tags/:id', tagController.findByPk);
 
 module.exports = router;

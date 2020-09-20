@@ -30,5 +30,22 @@ module.exports = class Tag {
             res.send(error)
         }
     }
+    /**Fin tag by id */
+    static async findByPk(id) {
+        try {
+            const query = 'SELECT * FROM "tag" WHERE id=$1';
+            const values = [id];
+            const tag = await db.query(query, values);
+            if(tag.rowCount == 1) {
+                return tag.rows[0];
+            }else{
+                return {"message": "Pas de résultats"};
+            }
+        }
+        catch (error){
+            console.log(error);
+            res.send(error)
+        }
+    }
 
 }
