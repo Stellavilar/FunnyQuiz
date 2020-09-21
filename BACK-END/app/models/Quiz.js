@@ -1,5 +1,7 @@
 const db = require('../dbconnection');
 
+const Answer = require ('./Answers');
+
 module.exports = class Quiz {
 
     id;
@@ -41,6 +43,11 @@ module.exports = class Quiz {
         try {
             const query = 'SELECT * FROM "quiz"';
             const result = await db.query(query);
+
+            for(let i = 0; i < result.rowCount; i++) {
+                const answer = await Answer.findByPk(result.rows[i].answer_id);
+                result.rows[i].answer = answer;
+            }
             if(result.rowCount < 1) {
                 return { "message" : "Pas de résultats" };
             }
