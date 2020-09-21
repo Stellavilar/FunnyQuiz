@@ -9,6 +9,7 @@ router.get('/quizzes', quizController.findAll);
 router.get('/quizzes/:id', quizController.findByPk);
 router.get('/quizzes/tag/:id', quizController.findByTag);
 router.get('/quizzes/level/:id', quizController.findByLevel);
+router.get('/quizzes/subcategory/:id', quizController.findSubcategory);
 
 /**Tags Routes */
 const tagController = require ('../controllers/tagController');
@@ -27,5 +28,10 @@ const answerController = require ('../controllers/answerController');
 
 router.get('/answers', answerController.findAll);
 router.get('/answers/:id', answerController.findByPk);
+
+/**Subcategories Routes */
+const subCategoryController = require ('../controllers/subCategoryController');
+
+router.get('/subcategories', subCategoryController.findAll);
 
 module.exports = router;

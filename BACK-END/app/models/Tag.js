@@ -11,6 +11,7 @@ module.exports = class Tag {
     constructor(params) {
         if(params.id) { this.id = params.id}
         if(params.title) { this.title = params.title}
+        if(params.color) { this.color = params.color}
         if(params.created_at) { this.created_at = params.created_at}
         if(params.updated_at) { this.updated_at = params.updated_at}
     }

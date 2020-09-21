@@ -108,6 +108,29 @@ module.exports = class Quiz {
             res.send(error)
         }
     }
+
+    /**Join subcategory to quiz table */
+    static async findSubcategory(id) {
+        try {
+            const query ='SELECT * FROM "quiz" INNER JOIN "quiz_has_subcategory" ON quiz.id=quiz_has_subcategory.quizzes_id WHERE subcategory_id=$1';
+            const values = [id];
+            const result = await db.query(query, values);
+
+            for(let i = 0; i < result.rowCount; i ++) {
+            const quizzes = await Quiz.findByPk(result.rows[i].quizzes_id);
+            result.rows[i].quizzes = quizzes
+            }
+
+            if(result.rowCount < 1){
+                return {"message": "Pas de résultat."};
+            }
+            return result.rows;
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
     
 
 };

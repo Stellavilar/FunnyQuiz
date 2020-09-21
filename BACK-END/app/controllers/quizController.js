@@ -65,14 +65,33 @@ module.exports = quizController = {
         const quiz = await Quiz.findByLevel(id);
         if(quiz == false) {
          return res.send({"error": "Pas de résultat trouvé"});
-     }
-     return res.send(quiz);
-    }
-    catch (error) {
-     console.log (error);
-     res.send(error);
- }
-},
+        }
+        return res.send(quiz);
+        }
+        catch (error) {
+        console.log (error);
+        res.send(error);
+        }
+    },
+    /**Find subcategory */
+    findSubcategory: async (req,res) => {
+        try {
+            const id = req.params.id;
+        if(!id) {
+         return res.status('403').send({"erreur": "Il manque un paramètre pour effectuer la demande"});
+        }
+        const quizzes = await Quiz.findSubcategory(id);
+        if(quizzes == false) {
+            return res.send({"error": "Pas de résultat trouvé"});
+        }
+         return res.send(quizzes);
+        }
+        catch (error) {
+         console.log (error);
+         res.send(error);
+        }
+
+    },
 
 
 
