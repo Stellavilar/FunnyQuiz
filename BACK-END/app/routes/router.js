@@ -10,6 +10,7 @@ router.get('/quizzes/:id', quizController.findByPk);
 router.get('/quizzes/tag/:id', quizController.findByTag);
 router.get('/quizzes/level/:id', quizController.findByLevel);
 router.get('/quizzes/subcategory/:id', quizController.findSubcategory);
+router.get('/tags/:tagId/levels/:levelId', quizController.findByTagAndLevel);
 
 /**Tags Routes */
 const tagController = require ('../controllers/tagController');

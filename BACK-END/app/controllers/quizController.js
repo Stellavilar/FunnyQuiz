@@ -69,10 +69,28 @@ module.exports = quizController = {
         return res.send(quiz);
         }
         catch (error) {
-        console.log (error);
-        res.send(error);
+            console.log (error);
+            res.send(error);
         }
     },
+
+    /**Find by Tag and Level */
+    findByTagAndLevel: async (req,res) => {
+        try {
+            const { tagId, levelId } = req.params;
+            const quiz = await Quiz.findByTagAndLevel(tagId,levelId);
+            if(quiz == false) {
+                return res.send({"error": "Pas de résultat trouvé"});
+               }
+               return res.send(quiz);
+        }
+        catch (error) {
+            console.log (error);
+            res.send(error);
+        }
+        
+    },
+
     /**Find subcategory */
     findSubcategory: async (req,res) => {
         try {

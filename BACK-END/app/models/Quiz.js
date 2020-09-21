@@ -109,6 +109,24 @@ module.exports = class Quiz {
         }
     }
 
+    /**Find by Tag ans Level */
+    static async findByTagAndLevel(tagId, levelId) {
+        try {
+            const query = 'SELECT * FROM "quiz" WHERE tag_id=$1 AND level_id=$2';
+            const values = [tagId, levelId];
+            const result = await db.query(query, values);
+            if(result.rowCount == 0) {
+                return {"message": "Pas de résultats"};
+            }
+                return result.rows;
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+
     /**Join subcategory to quiz table */
     static async findSubcategory(id) {
         try {
