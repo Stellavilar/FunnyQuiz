@@ -22,4 +22,10 @@ const levelController = require('../controllers/levelController');
 router.get('/levels', levelController.findAll);
 router.get('/levels/:id', levelController.findByPk);
 
+/**Answers Routes */
+const answerController = require ('../controllers/answerController');
+
+router.get('/answers', answerController.findAll);
+router.get('/answers/:id', answerController.findByPk);
+
 module.exports = router;

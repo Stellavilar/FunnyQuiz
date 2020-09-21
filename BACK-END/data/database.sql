@@ -66,5 +66,12 @@ CREATE TABLE quiz_has_subcategory (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TABLE IF EXISTS answer;
+CREATE TABLE answer (
+    id int NOT NULL,
+    title text NOT NULL,
+    quiz_id int NOT NULL REFERENCES quiz(id),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+);
 
 COMMIT;
