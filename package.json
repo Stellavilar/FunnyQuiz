@@ -1,0 +1,19 @@
+{
+  "name": "funnyquiz",
+  "version": "1.0.0",
+  "description": "Funny game built with Postgres and ReactJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stellavilar/FunnyQuiz.git"
+  },
+  "author": "Stella Vilar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stellavilar/FunnyQuiz/issues"
+  },
+  "homepage": "https://github.com/Stellavilar/FunnyQuiz#readme"
+}
