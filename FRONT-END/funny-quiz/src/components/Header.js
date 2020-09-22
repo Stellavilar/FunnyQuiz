@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from '../img/FUNNY QUIZ.jpg';
-import { Dropdown, Menu, Search } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 
 
 
@@ -16,15 +15,9 @@ const Header = ({tag, level}) => {
   
    return (
     <div className="head">
-        <div className="logo-area">
-            <img src={logo} alt="Funny quiz logo"/>
-            <p>Quizs marrants pour les petits et les grands!</p>
-            <Search></Search>
-        </div>
         <Menu>
             {tags}
         </Menu>
-        
     </div>
 )
          
