@@ -1,12 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap');
 
 
+$blue: #0048A9;
+
 body {
   font-family: 'Grandstander', cursive;
+  width: 100vw;
+  min-height: 100vh;
   margin: 0px;
 }
 
-.App {
-  width: 100vw;
-  min-height: 100vh;
-};
+/* Desktop Version*/
+
+/*Header*/
+.logo-area {
+  text-align: center;
+  padding: 5px;
+
+  img { 
+    height: 100px;
+  }
+  p{
+    font-size: 20px;
+    font-weight: bold;
+    color: $blue;
+  }
+}
+.head {
+
+  padding: 2em;
+  .ui.menu {
+    display: flex;
+    flex-direction: column;
+    width: 25em;
+  }
+  .ui.dropdown {
+    font-size: 20px;
+    font-family:  'Grandstander', cursive;
+    display: flex;
+    width: 25em;
+  
+  }
+  .ui.search {
+    display: flex;
+    margin-left: 10em;
+  }
+ 
+}
