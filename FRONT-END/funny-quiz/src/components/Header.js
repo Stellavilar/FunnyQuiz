@@ -4,14 +4,13 @@ import { Dropdown, Menu, Search } from 'semantic-ui-react';
 
 
 
-const Header = ({tag}) => {
+const Header = ({tag, level}) => {
     
     const tags = tag.map((getTag, index) => 
         <Dropdown key={getTag.id} text={getTag.title} pointing='left' className='link item' style={{backgroundColor: getTag.color}}>
             <Dropdown.Menu>
-                <Dropdown.Item>Débutant</Dropdown.Item>
-                <Dropdown.Item>Intermédiaire</Dropdown.Item>
-                <Dropdown.Item>Expert</Dropdown.Item>
+                {level.map((getLevel, index) => 
+                {return <Dropdown.Item key={getLevel.id}>{getLevel.title}</Dropdown.Item>})}
             </Dropdown.Menu>
         </Dropdown>)
   

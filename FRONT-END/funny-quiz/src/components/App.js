@@ -21,13 +21,33 @@ const App = () => {
         })
         return tags
     };
-    useEffect(tags, []);
+    
+  /**get levels */
+  const [ level, setLevel ] = useState([]);
+  const levelUrl = 'http://localhost:1234/levels';
+  const levels = () => {
+    axios.get(
+      levelUrl,
+  )
+  .then((res) => {
+      setLevel(res.data)
+  })
+  .catch((err) => {
+      console.log(err)
+  })
+  return levels
+};
+
+useEffect(tags, []);
+useEffect(levels, []);
+  
 
   return (
     <>
       <header className="header">
         <Header
          tag={tag}
+         level={level}
          />
       </header>
       <main className="main">
