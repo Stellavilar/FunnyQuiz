@@ -58,7 +58,7 @@ useEffect(levels, []);
          </Route>
       </header>
       <main className="main">
-        <Route exact path='/specificQuiz'>
+        <Route exact path='/specificQuiz/:tagId/level/:levelId'>
           <LogoArea />
           <Quiz />
         </Route>
