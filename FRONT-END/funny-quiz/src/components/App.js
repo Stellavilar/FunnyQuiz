@@ -7,6 +7,7 @@ import '../styles/index.scss';
 import Header from './Header';
 import Quiz from './Quiz';
 import LogoArea from './LogoArea';
+import SubCatQuiz from './SubCatQuiz';
 import Slides from './Slides';
 
 const App = () => {
@@ -86,6 +87,10 @@ useEffect(categories, []);
         <Route exact path='/specificQuiz/:tagId/level/:levelId'>
           <LogoArea />
           <Quiz />
+        </Route>
+        <Route exact path='/classifiedQuiz/:id'>
+          <LogoArea />
+          <SubCatQuiz />
         </Route>
       </main>
       <footer className="footer">

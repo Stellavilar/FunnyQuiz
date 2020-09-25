@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
 
+
 const Quiz = () => {
    //const [ getAnswer, setGetAnswer ] = useState([]);
     /**Handle checkbox */

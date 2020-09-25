@@ -71,6 +71,18 @@ body {
      margin-right: 1.5em;
    }
 }
+.subcategories {
+
+  padding: 5em;
+
+   li {
+     list-style: none;
+     margin-bottom: 1em;
+   }
+   .ui.checkbox {
+     margin-right: 1.5em;
+   }
+}
 
 /*Slides*/
 .slides {
@@ -81,7 +93,7 @@ body {
   .carousel{
     display: flex;
     align-items: center;
-    text-align: center;
+    background-color: pink;
 
     p {
       font-size: 5em;
