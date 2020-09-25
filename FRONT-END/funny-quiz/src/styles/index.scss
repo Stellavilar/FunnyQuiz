@@ -12,6 +12,12 @@ body {
 
 /* Desktop Version*/
 
+.dashboard {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 /*Header*/
 .logo-area {
   text-align: center;
@@ -33,13 +39,17 @@ body {
     display: flex;
     flex-direction: column;
     width: 25em;
+    border: none;
   }
   .ui.dropdown {
     font-size: 20px;
     font-family:  'Grandstander', cursive;
     display: flex;
     width: 25em;
-  
+  }
+  .ui.dropdown.link.item{
+    width:100%;
+    
   }
   .ui.search {
     display: flex;
@@ -60,4 +70,12 @@ body {
    .ui.checkbox {
      margin-right: 1.5em;
    }
+}
+
+/*Slides*/
+.slides {
+  width: 65%;
+  height: 460px;
+  background-color: $blue;
+  border-radius: 20px;
 }

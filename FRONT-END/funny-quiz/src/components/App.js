@@ -7,6 +7,7 @@ import '../styles/index.scss';
 import Header from './Header';
 import Quiz from './Quiz';
 import LogoArea from './LogoArea';
+import Slides from './Slides';
 
 const App = () => {
   /**Get tags */
@@ -40,10 +41,26 @@ const App = () => {
   })
   return levels
 };
+/**Get answers */
+const [ answer, setAnswer ] = useState([]);
+const answerUrl = 'http://localhost:1234/answers';
+const answers = () => {
+  axios.get(
+    answerUrl,
+)
+.then((res) => {
+    setAnswer(res.data)
+})
+.catch((err) => {
+    console.log(err)
+})
+return answers
+};
 
 
 useEffect(tags, []);
 useEffect(levels, []);
+useEffect(answers, []);
   
 
   return (
@@ -51,16 +68,22 @@ useEffect(levels, []);
       <header className="header">
         <Route exact path='/'>
           <LogoArea />
-          <Header
-          tag={tag}
-          level={level}
-          />
          </Route>
       </header>
       <main className="main">
+        <div className="dashboard">
+          <Route exact path='/'>
+            <Header
+            tag={tag}
+            level={level}
+            />
+            <Slides />
+          </Route>
+        </div>
         <Route exact path='/specificQuiz/:tagId/level/:levelId'>
           <LogoArea />
-          <Quiz />
+          <Quiz 
+           answer={answer}/>
         </Route>
       </main>
       <footer className="footer">
