@@ -76,6 +76,15 @@ body {
 .slides {
   width: 65%;
   height: 460px;
-  background-color: $blue;
   border-radius: 20px;
+  
+  .carousel{
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    p {
+      font-size: 5em;
+    }
+  }
 }

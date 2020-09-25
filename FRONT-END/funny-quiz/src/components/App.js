@@ -41,26 +41,28 @@ const App = () => {
   })
   return levels
 };
-/**Get answers */
-const [ answer, setAnswer ] = useState([]);
-const answerUrl = 'http://localhost:1234/answers';
-const answers = () => {
+
+/**Get subcategories */
+const [ category, setCategory ] = useState ([]);
+const categoryUrl = 'http://localhost:1234/subcategories';
+const categories = () => {
   axios.get(
-    answerUrl,
+    categoryUrl,
 )
 .then((res) => {
-    setAnswer(res.data)
+    setCategory(res.data)
 })
 .catch((err) => {
     console.log(err)
 })
-return answers
+return categories
 };
 
 
 useEffect(tags, []);
 useEffect(levels, []);
-useEffect(answers, []);
+useEffect(categories, []);
+
   
 
   return (
@@ -77,13 +79,13 @@ useEffect(answers, []);
             tag={tag}
             level={level}
             />
-            <Slides />
+            <Slides 
+             category={category}/>
           </Route>
         </div>
         <Route exact path='/specificQuiz/:tagId/level/:levelId'>
           <LogoArea />
-          <Quiz 
-           answer={answer}/>
+          <Quiz />
         </Route>
       </main>
       <footer className="footer">

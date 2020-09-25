@@ -1,11 +1,10 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
 
 const Quiz = () => {
-    //const [ getAnswer, setGetAnswer ] = useState([]);
-    const getRef = createRef();
+   //const [ getAnswer, setGetAnswer ] = useState([]);
     /**Handle checkbox */
     const [ state, setState] = useState({});
     const handleChange = (e, { value }) => setState({value}, console.log(value));
@@ -19,8 +18,7 @@ const Quiz = () => {
         if (state.value === 'Se rafraîchir'){
             console.log('Bonne réponse')
         }else{
-            console.log('Mauvaise Réponse');
-           
+            console.log('Mauvaise Réponse');          
         }
         
     };
@@ -46,7 +44,7 @@ const Quiz = () => {
     };
     
     useEffect(quizzes, []);
-   console.log(getRef.current)
+
     const getQuiz = quiz.map((quizzes, index) => 
         <Segment key={quizzes.id}>
             <li>{quizzes.question}</li>
