@@ -5,7 +5,9 @@ import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
 
 
 const Quiz = () => {
-   //const [ getAnswer, setGetAnswer ] = useState([]);
+    /**Check answer */
+    const [ answ, setAnsw ] = useState([]);
+    
     /**Handle checkbox */
     const [ state, setState] = useState({});
     const handleChange = (e, { value }) => setState({value}, console.log(value));
@@ -16,10 +18,10 @@ const Quiz = () => {
         if(!state.value){
             return console.log('Vous n\'avez pas coché de réponse !')
         }
-        if (state.value === 'Se rafraîchir'){
+        if (state.value === answ){
             console.log('Bonne réponse')
         }else{
-            console.log('Mauvaise Réponse');          
+            console.log('Mauvaise Réponse');        
         }
         
     };
@@ -52,10 +54,10 @@ const Quiz = () => {
             <Form
              onSubmit={handleSubmit}
             >
-                <Checkbox radio label={quizzes.prop1} value={quizzes.prop1} checked={state.value === quizzes.prop1} onChange={handleChange} />
-                <Checkbox radio label={quizzes.prop2} value={quizzes.prop2} checked={state.value === quizzes.prop2} onChange={handleChange}/>
-                <Checkbox radio label={quizzes.prop3} value={quizzes.prop3} checked={state.value === quizzes.prop3} onChange={handleChange}/>
-                <Checkbox radio label={quizzes.prop4} value={quizzes.prop4} checked={state.value === quizzes.prop4} onChange={handleChange}/>
+                <Checkbox radio label={quizzes.prop1} value={quizzes.prop1} checked={state.value === quizzes.prop1} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
+                <Checkbox radio label={quizzes.prop2} value={quizzes.prop2} checked={state.value === quizzes.prop2} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
+                <Checkbox radio label={quizzes.prop3} value={quizzes.prop3} checked={state.value === quizzes.prop3} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
+                <Checkbox radio label={quizzes.prop4} value={quizzes.prop4} checked={state.value === quizzes.prop4} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
                 <Form.Button color='teal' type='submit' >Valider</Form.Button>
             </Form>
         </Segment> 

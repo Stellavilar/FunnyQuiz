@@ -9,6 +9,7 @@ import Quiz from './Quiz';
 import LogoArea from './LogoArea';
 import SubCatQuiz from './SubCatQuiz';
 import Slides from './Slides';
+//import Page404 from './Page404';
 
 const App = () => {
   /**Get tags */
@@ -84,14 +85,14 @@ useEffect(categories, []);
              category={category}/>
           </Route>
         </div>
-        <Route exact path='/specificQuiz/:tagId/level/:levelId'>
-          <LogoArea />
-          <Quiz />
-        </Route>
-        <Route exact path='/classifiedQuiz/:id'>
-          <LogoArea />
-          <SubCatQuiz />
-        </Route>
+          <Route exact path='/specificQuiz/:tagId/level/:levelId'>
+            <LogoArea />
+            <Quiz />
+          </Route>
+          <Route exact path='/classifiedQuiz/:id'>
+            <LogoArea />
+            <SubCatQuiz />
+          </Route>
       </main>
       <footer className="footer">
      
