@@ -7,41 +7,45 @@ import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
 const Quiz = () => {
     /**Check answer */
     const [ answ, setAnsw ] = useState([]);
-    
     /**Handle checkbox */
     const [ state, setState] = useState({});
     const handleChange = (e, { value }) => setState({value}, console.log(value));
+    /**Show anecdote */
+    const [ showWiki, setShowWiki ] = useState([]);
    
     /**Handle submit form */
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!state.value){
-            return console.log('Vous n\'avez pas coché de réponse !')
-        }
-        if (state.value === answ){
-            console.log('Bonne réponse')
-        }else{
-            console.log('Mauvaise Réponse');        
-        }
+        let paragraph = e.target.lastElementChild;
+        console.log(e.target.children.div)
+        e.target.reset();
         
+        if(!state.value){
+            paragraph.textContent = ' * Vous n\'avez pas coché de réponse !';
+            paragraph.className = 'noAnswer';
+        }
+        else if (state.value === answ){
+            paragraph.textContent = 'Bonne réponse :  ' + showWiki;
+            paragraph.className = 'goodAnswer';
+        }else{
+            paragraph.textContent = 'Mauvaise réponse...';
+            paragraph.className = 'badAnswer';
+        }
     };
 
     /**Get quiz by tag and level */
     let { tagId, levelId } = useParams();
     const [ quiz, setQuiz ] = useState ([]);
-    const url = `http://localhost:1234/tags/${tagId}/levels/${levelId}`;
 
     const quizzes = () => {
-        axios.get(
-            url,
-        )
-        .then((res) => {
-            setQuiz(res.data)
-        
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+        axios
+            .get(`http://localhost:1234/tags/${tagId}/levels/${levelId}`)
+            .then((res) => {
+                setQuiz(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
         return quizzes;
     };
@@ -58,17 +62,19 @@ const Quiz = () => {
                 <Checkbox radio label={quizzes.prop2} value={quizzes.prop2} checked={state.value === quizzes.prop2} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
                 <Checkbox radio label={quizzes.prop3} value={quizzes.prop3} checked={state.value === quizzes.prop3} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
                 <Checkbox radio label={quizzes.prop4} value={quizzes.prop4} checked={state.value === quizzes.prop4} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
-                <Form.Button color='teal' type='submit' >Valider</Form.Button>
+                <Form.Button type='submit' onClick={e => setShowWiki(quizzes.anecdote)}>Valider</Form.Button>
+                <p></p>
             </Form>
         </Segment> 
     );
 
     return (
-        <div className="quiz">
-            <Header as='h2'>Questions</Header>
-            {getQuiz}
-        </div>
+            <div className="quiz">
+                <Header as='h2'>Questions</Header>
+                {getQuiz}
+            </div>
     );
 };
+
 
 export default Quiz;
