@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "install_back": "cd BACK-END && npm install && cd ..",
+    "install_front": "cd FRONT-END/funny-quiz && yarn",
+    "install": "npm run install_back && npm run install_front",
     "start_back": "npx nodemon BACK-END/index.js",
     "start_front": "cd FRONT-END/funny-quiz && npm start ",
-    "watching": "npm run start_back && npm run start_front ",
+    "watching": "npm run start_back & npm run start_front ",
     "start": ""
   },
   "repository": {
