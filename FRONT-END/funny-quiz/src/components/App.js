@@ -14,7 +14,7 @@ import Slides from './Slides';
 const App = () => {
   /**Get tags */
   const [ tag, setTag] = useState([]);
-  const url = 'http://localhost:1234/tags';
+  const url = 'http://ec2-54-242-189-29.compute-1.amazonaws.com:1234/tags';
   const tags = () => {
         axios.get(
             url,
@@ -30,7 +30,7 @@ const App = () => {
     
   /**get levels */
   const [ level, setLevel ] = useState([]);
-  const levelUrl = 'http://localhost:1234/levels';
+  const levelUrl = 'http://ec2-54-242-189-29.compute-1.amazonaws.com:1234/levels';
   const levels = () => {
     axios.get(
       levelUrl,
@@ -46,7 +46,7 @@ const App = () => {
 
 /**Get subcategories */
 const [ category, setCategory ] = useState ([]);
-const categoryUrl = 'http://localhost:1234/subcategories';
+const categoryUrl = 'http://ec2-54-242-189-29.compute-1.amazonaws.com:1234/subcategories';
 const categories = () => {
   axios.get(
     categoryUrl,
