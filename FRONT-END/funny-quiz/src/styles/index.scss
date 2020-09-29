@@ -185,6 +185,13 @@ body {
         margin-left: 45px;
       }
     }
-}
+  }
+  .quiz {
+    padding: 0.5em;
+
+    .ui.segment {
+      width: 100%;
+    }
+  }
 
 }
