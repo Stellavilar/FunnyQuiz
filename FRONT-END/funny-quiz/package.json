@@ -19,7 +19,7 @@
     "semantic-ui-react": "^1.2.1"
   },
   "scripts": {
-    "start": " set http://ec2-54-242-189-29.compute-1.amazonaws.com:3000 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
