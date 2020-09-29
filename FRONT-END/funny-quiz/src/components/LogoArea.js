@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { Link } from 'react-router-dom';
-import { Search } from 'semantic-ui-react';
+import { Search, Button } from 'semantic-ui-react';
 
 const LogoArea = () => {
     return (
@@ -11,6 +11,10 @@ const LogoArea = () => {
                 <p>Quizs marrants pour les petits et les grands!</p>
             </Link>
             <Search></Search>
+            <div className='profile-buttons'>
+                <Button>Créer un compte</Button>
+                <Button>Connexion</Button>
+            </div>
         </div>
     )
 

@@ -22,6 +22,11 @@ body {
 .logo-area {
   text-align: center;
   padding: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  
 
   img { 
     height: 100px;
@@ -79,7 +84,7 @@ body {
    }
    .ui.button {
      margin: 15px;
-     background-color: #ad6053;
+     background-color: #3c8e33;
      color: white;
    }
    .badAnswer {
@@ -121,10 +126,11 @@ body {
   .carousel{
     display: flex;
     align-items: center;
-    background-color: pink;
+    background-color: #edeaea;
 
     p {
       font-size: 5em;
+      margin-left: 200px;
     }
   }
 }

@@ -17,7 +17,6 @@ const Quiz = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let paragraph = e.target.lastElementChild;
-        console.log(e.target.children.div)
         e.target.reset();
         
         if(!state.value){
@@ -51,18 +50,18 @@ const Quiz = () => {
     };
     
     useEffect(quizzes, []);
-
-    const getQuiz = quiz.map((quizzes, index) => 
+   
+    const getQuiz = quiz.map((quizzes) => 
         <Segment key={quizzes.id}>
             <li>{quizzes.question}</li>
             <Form
              onSubmit={handleSubmit}
             >
-                <Checkbox radio label={quizzes.prop1} value={quizzes.prop1} checked={state.value === quizzes.prop1} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
                 <Checkbox radio label={quizzes.prop2} value={quizzes.prop2} checked={state.value === quizzes.prop2} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
+                <Checkbox radio label={quizzes.prop1} value={quizzes.prop1} checked={state.value === quizzes.prop1} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
                 <Checkbox radio label={quizzes.prop3} value={quizzes.prop3} checked={state.value === quizzes.prop3} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
                 <Checkbox radio label={quizzes.prop4} value={quizzes.prop4} checked={state.value === quizzes.prop4} onChange={handleChange} onClick={e => setAnsw(quizzes.answer.title)}/>
-                <Form.Button type='submit' onClick={e => setShowWiki(quizzes.anecdote)}>Valider</Form.Button>
+                <Form.Button color='grey' type='submit' onClick={e => setShowWiki(quizzes.anecdote)}>Valider</Form.Button>
                 <p></p>
             </Form>
         </Segment> 
