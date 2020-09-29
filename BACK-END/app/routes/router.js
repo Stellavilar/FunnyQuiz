@@ -35,4 +35,11 @@ const subCategoryController = require ('../controllers/subCategoryController');
 
 router.get('/subcategories', subCategoryController.findAll);
 
+/**Users Routes */
+const userController = require ('../controllers/userController');
+
+router.post('/add', userController.add);
+router.get('/users', userController.findAll);
+
+
 module.exports = router;
