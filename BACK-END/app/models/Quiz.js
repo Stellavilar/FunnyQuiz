@@ -115,6 +115,10 @@ module.exports = class Quiz {
             const query = 'SELECT * FROM "quiz" WHERE tag_id=$1 AND level_id=$2';
             const values = [tagId, levelId];
             const result = await db.query(query, values);
+            for(let i = 0; i < result.rowCount; i++) {
+                const answer = await Answer.findByPk(result.rows[i].answer_id);
+                result.rows[i].answer = answer;
+            }
             if(result.rowCount == 0) {
                 return {"message": "Pas de résultats"};
             }
@@ -134,15 +138,19 @@ module.exports = class Quiz {
             const values = [id];
             const result = await db.query(query, values);
 
-            for(let i = 0; i < result.rowCount; i ++) {
+            for(let i = 0; i < result.rowCount; i++) {
             const quizzes = await Quiz.findByPk(result.rows[i].quizzes_id);
             result.rows[i].quizzes = quizzes
             }
-
-            if(result.rowCount < 1){
-                return {"message": "Pas de résultat."};
+            for(let i = 0; i < result.rowCount; i++) {
+                const answer = await Answer.findByPk(result.rows[i].answer_id);
+                result.rows[i].answer = answer;
             }
-            return result.rows;
+
+            if(result.rowCount == 0) {
+                return {"message": "Pas de résultats"};
+            }
+                return result.rows;
         }
         catch (error) {
             console.log(error);
