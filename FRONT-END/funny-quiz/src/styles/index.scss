@@ -134,3 +134,57 @@ body {
     }
   }
 }
+
+/*Mobile version*/
+@media only screen and (max-width: 768px) {
+  
+  .logo-area {
+    
+    display: flex;
+    flex-direction: column;
+
+    img {
+      height: 50px;
+    }
+    p{
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    .profile-buttons {
+      display: none;
+    }
+  }
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .ui.menu {
+      width: 15em;
+
+      .ui.dropdown>.text {
+        font-size: 0.9em;
+      }
+
+    }
+  }
+  .slides {
+    width: 100%;
+    height: 200px;
+
+    .react-slideshow-container {
+      margin: 20px;
+    }
+
+    .carousel {
+
+      height: 300px;
+
+      p {
+        font-size: 2em;
+        margin-left: 45px;
+      }
+    }
+}
+
+}
