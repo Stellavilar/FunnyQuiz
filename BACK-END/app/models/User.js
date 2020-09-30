@@ -74,4 +74,41 @@ module.exports = class User {
             res.send(error)
         }
     }
+
+    /**Edit profil user */
+    async edit() {
+        try{
+            const query = 'UPDATE "users" SET username=$1, mail=$2, password=$3 WHERE id=$4 RETURNING *;';
+            const values = [this.username, this.mail, this.password, this.id];
+            const result = await db.query(query, values);
+            if(result.rowCount == 1){
+                return result.rows[0];
+            }else {
+                return false;
+            } 
+        }
+        catch (error) {
+            console.log(error);
+            return error;
+        }
+    }
+
+    /**Delete user */
+    static async delete(id) {
+        try {
+            const query = 'DELETE FROM "users" WHERE id=$1;';
+            const values = [id];
+            const result = await db.query(query, values);
+            if(result.rowCount == 1) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        catch(error) {
+            console.log(error);
+            return error;
+        }
+    }
+
 };

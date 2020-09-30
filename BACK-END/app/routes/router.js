@@ -37,10 +37,13 @@ router.get('/subcategories', subCategoryController.findAll);
 
 /**Users Routes */
 const userController = require ('../controllers/userController');
+const { Router } = require('express');
 
 router.post('/add', userController.add);
 router.get('/users', userController.findAll);
 router.get('/users/:id', userController.findByPk);
+router.patch('/edit/:id', userController.edit);
+router.delete('/delete/:id', userController.delete);
 
 
 module.exports = router;
