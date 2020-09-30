@@ -52,13 +52,33 @@ module.exports = {
             if(users) {
                 return res.send(users)
             }else{
-                return res.status(403).send({ 'Error' : 'Une erreur s\'est produite'});
+                return res.status(403).send({ "Error" : "Une erreur s\'est produite"});
             }
 
         }
         catch (error) {
             console.log(error);
-            return res.status(403).send(error)
+            return res.status(403).send(error);
+        }
+    },
+
+    /**Find by id */
+   
+    findByPk: async (req,res) => {
+        try {
+            const id = req.params.id;
+            if(!id) {
+                return res.status('403').send({"erreur": "Il manque un paramètre pour effectuer la demande"});
+            }
+               const users = await User.findByPk(id);
+               if(users == false) {
+                return res.send({"error": "Pas de résultat trouvé"});
+            }
+            return res.send(users);
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error);
         }
     },
 

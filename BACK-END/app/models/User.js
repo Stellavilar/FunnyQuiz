@@ -56,4 +56,22 @@ module.exports = class User {
             return error;
         }
     }
+
+    /**Find by id */
+    static async findByPk(id) {
+        try {
+            const query = 'SELECT * FROM "users" WHERE id=$1';
+            const values = [id];
+            const user = await db.query(query, values);
+            if(user.rowCount == 1) {
+                return user.rows[0];
+            }else{
+                return {"message": "Pas de résultats"};
+            }
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
 };

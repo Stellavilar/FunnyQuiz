@@ -40,6 +40,7 @@ const userController = require ('../controllers/userController');
 
 router.post('/add', userController.add);
 router.get('/users', userController.findAll);
+router.get('/users/:id', userController.findByPk);
 
 
 module.exports = router;
