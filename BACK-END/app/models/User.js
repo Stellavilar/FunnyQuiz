@@ -1,5 +1,6 @@
 const db = require ('../dbconnection');
 const bcrypt = require ('bcrypt');
+const jwt = require ('../utils/jwt.utils');
 
 module.exports = class User {
 
@@ -110,5 +111,51 @@ module.exports = class User {
             return error;
         }
     }
+
+    static async login(username, password) {
+        try {
+            const query = 'SELECT * FROM "users" WHERE username=$1;';
+            const values = [username];
+            const result = await db.query(query, values);
+            if(result.rowCount == 1 ) {
+                const passwordDb = result.rows[0].password;
+                if(await bcrypt.compare(password, passwordDb)) {
+                    this.token = jwt.generateUserToken(result.rows[0]);
+                    const queryAddToken = 'UPDATE "users" SET token=$1 WHERE username=$2 RETURNING *;';
+                    const valuesAddToken = [this.token, username];
+                    const resultAddToken = await db.query(queryAddToken, valuesAddToken)
+                    return resultAddToken;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+        catch (error) {
+            console.log(error);
+            return error
+        }
+
+    }
+
+    static async logout (userId) {
+        try {
+            const query = 'UPDATE "users" SET token=$1, updated_at=now() WHERE id=$2;';
+            const values = ['',userId];
+            const result = await db.query(query, values);
+            if(result.rowCount == 1) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        catch(error) {
+            console.log(error);
+            return false
+        }
+    }
+
+    
 
 };

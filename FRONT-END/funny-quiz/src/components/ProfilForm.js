@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { Link } from 'react-router-dom';
 import { Button, Header, Form } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -9,6 +10,8 @@ import validateEmail from '../utils/mail.utils';
 import validatePassword from '../utils/password.utils';
 
 const ProfilForm = () => {
+
+    const history = useHistory();
 
     /**Hooks for form validation */
     const firstRender = useRef(true);
@@ -29,6 +32,7 @@ const ProfilForm = () => {
         axios.post('http://localhost:1234/add', userProfil)
             .then((res) => {
                 console.log(res)
+                history.push('/');
             })
             .catch((err) => {
                 console.log(err)

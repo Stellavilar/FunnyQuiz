@@ -45,5 +45,10 @@ router.get('/users/:id', userController.findByPk);
 router.patch('/edit/:id', userController.edit);
 router.delete('/delete/:id', userController.delete);
 
+/**Login and Logout routes */
+const loginController = require ('../controllers/loginController');
+
+router.post('/api/login', loginController.login);
+router.get('/api/logout', loginController.logout);
 
 module.exports = router;
