@@ -12,7 +12,9 @@ const LogoArea = () => {
             </Link>
             <Search></Search>
             <div className='profile-buttons'>
-                <Button>Créer un compte</Button>
+                <Link to='/createProfil'>
+                    <Button>Créer un compte</Button>
+                </Link>
                 <Button>Connexion</Button>
             </div>
         </div>

@@ -9,6 +9,7 @@ import Quiz from './Quiz';
 import LogoArea from './LogoArea';
 import SubCatQuiz from './SubCatQuiz';
 import Slides from './Slides';
+import ProfilForm from './ProfilForm';
 //import Page404 from './Page404';
 
 const App = () => {
@@ -98,6 +99,9 @@ useEffect(categories, []);
           <Route exact path='/classifiedQuiz/:id'>
             <LogoArea />
             <SubCatQuiz />
+          </Route>
+          <Route exact path='/createProfil'>
+            <ProfilForm />
           </Route>
       </main>
       <footer className="footer">

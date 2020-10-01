@@ -135,6 +135,45 @@ body {
   }
 }
 
+/*Profil form*/
+.profil-form {
+  text-align: center;
+  padding: 5px;
+
+  img { 
+    height: 100px;
+  }
+  p{
+    font-size: 20px;
+    font-weight: bold;
+    color: $blue;
+  }
+
+  .ui.header {
+    margin-top: 100px;
+    font-family: 'Grandstander', cursive;
+    color: #a52a2a;
+  }
+
+  .ui.form {
+  
+    margin: 60px;
+
+    .field {
+      width: 40%;
+      margin: auto;
+    }
+
+    .buttons {
+      margin: 25px;
+    }
+    .error {
+      font-size: 0.8em;
+    }
+
+  }
+}
+
 /*Mobile version*/
 @media only screen and (max-width: 768px) {
   

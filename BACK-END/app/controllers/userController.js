@@ -11,8 +11,8 @@ module.exports = {
     /**Add user */
     add: async (req,res) => {
         try {
-            const { username, mail, score, password } = req.body;
-            //Check if all params are existing
+            const { username, mail, password } = req.body;
+            // //Check if all params are existing
             if (!password || !username || !mail) {
                 return res.send('Vous n\'avez pas renseigné tous les éléments nécessaires');
             }
@@ -32,7 +32,7 @@ module.exports = {
                 username,
                 mail,
                 password: passwordHashed,
-                score,
+                
             });
             //Save new user
             const result = await user.save();

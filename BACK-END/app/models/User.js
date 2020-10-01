@@ -23,8 +23,8 @@ module.exports = class User {
 
     async save() {
         try {
-            const query = 'INSERT INTO "users" (username, mail, score, password) VALUES ($1, $2, $3, $4) RETURNING *;';
-            const values = [this.username, this.mail, this.score, this.password];
+            const query = 'INSERT INTO "users" (username, mail, password) VALUES ($1, $2, $3) RETURNING *;';
+            const values = [this.username, this.mail, this.password];
             const result = await db.query(query, values);
             if((await result).rowCount != 1) {
                 return false
