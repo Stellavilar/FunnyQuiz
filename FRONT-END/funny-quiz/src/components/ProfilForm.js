@@ -29,7 +29,7 @@ const ProfilForm = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        axios.post('http://localhost:1234/add', userProfil)
+        axios.post('add', userProfil)
             .then((res) => {
                 console.log(res)
                 history.push('/');

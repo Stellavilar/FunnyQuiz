@@ -1,10 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { Link } from 'react-router-dom';
-import { Search, Button } from 'semantic-ui-react';
+import { Search, Button, Header } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-const LogoArea = () => {
+
+
+const LogoArea = ({user}) => {
+    const history = useHistory();
+    // const token = localStorage.getItem('token');
+
+    // const [ getLoggedIn, setGetLoggedIn ] = useState(true)
+    const onClickCreate = () => {
+        history.push('/createProfil');
+    };
+    const onClickConnect = () => {
+        history.push('/connect');
+    };
+    const disconnect = () => {
+        const token = localStorage.getItem('token');
+        axios
+            .get('api/logout', { headers:{
+                Authorization: 'Bearer ' + token,
+            },        
+          }) 
+          .then((res) => {
+              localStorage.removeItem('token')
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+          return disconnect;
+    };
+    
+
     return (
+        
         <div className="logo-area">
             <Link to='/'>
                 <img src={logo} alt="Funny quiz logo"/>
@@ -12,10 +44,12 @@ const LogoArea = () => {
             </Link>
             <Search></Search>
             <div className='profile-buttons'>
-                <Link to='/createProfil'>
-                    <Button>Créer un compte</Button>
-                </Link>
-                <Button>Connexion</Button>
+                <Header as='h2'></Header> 
+                
+                <Button color='red' onClick={disconnect}>Déconnexion</Button> 
+                <Button onClick={onClickCreate}>Créer un compte</Button> 
+                <Button onClick={onClickConnect}>Connexion</Button>   
+                    
             </div>
         </div>
     )

@@ -38,7 +38,7 @@ const Quiz = () => {
 
     const quizzes = () => {
         axios
-            .get(`http://localhost:1234/tags/${tagId}/levels/${levelId}`)
+            .get(`tags/${tagId}/levels/${levelId}`)
             .then((res) => {
                 setQuiz(res.data)
             })
