@@ -4,9 +4,10 @@ import axios from 'axios';
 import '../styles/index.scss';
 
 
-import Header from './Header';
+import ItemMenu from './ItemMenu';
 import Quiz from './Quiz';
-import LogoArea from './LogoArea';
+import Header from './Header';
+import HeaderLoggedIn from './HeaderLoggedIn';
 import SubCatQuiz from './SubCatQuiz';
 import Slides from './Slides';
 import ProfilForm from './ProfilForm';
@@ -67,7 +68,6 @@ const users = () => {
       }
     })
     .then((res) => {
-      console.log(res)
       setUser(res.data)
     })
     .catch((err) => {
@@ -87,37 +87,31 @@ useEffect(users, []);
   return (
     <div className="main">
       <Switch>
-          <Route exact path='/connect'>
-          <LogoArea 
-           user={user}/>
+        <Route exact path='/connect'>
+          <Header user={user}/>
           <Login />
-          </Route>
+        </Route>
         <Route exact path='/'>
-          <LogoArea 
-           user={user}/>
-            <Header
-            tag={tag}
-            level={level}
-            />
-            <Slides 
-             category={category}
-             user={user}
-             />
-          </Route>
-          <Route exact path='/specificQuiz/:tagId/level/:levelId'>
-            <LogoArea 
-              user={user}
-              />
+          <Header user={user}/>
+            <ItemMenu tag={tag} level={level} />
+            <Slides category={category} user={user} />
+        </Route>
+        <Route exact path='/user/:id'>
+          <HeaderLoggedIn />
+            <ItemMenu tag={tag} level={level} />
+            <Slides category={category}/>
+        </Route>
+        <Route exact path='/specificQuiz/:tagId/level/:levelId'>
+            <Header user={user}/>
             <Quiz />
-          </Route>
-          <Route exact path='/classifiedQuiz/:id'>
-            <LogoArea 
-             user={user}/>
+        </Route>
+        <Route exact path='/classifiedQuiz/:id'>
+            <Header user={user}/>
             <SubCatQuiz />
-          </Route>
-          <Route exact path='/createProfil'>
+        </Route>
+        <Route exact path='/createProfil'>
             <ProfilForm />
-          </Route>
+        </Route>
       </Switch>
     </div>
   );

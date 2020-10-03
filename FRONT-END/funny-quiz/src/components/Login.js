@@ -28,7 +28,8 @@ const Login = () => {
                 localStorage.setItem('token', res.data.token.rows[0].token)
                 setUserData(res.data.token.rows[0].username)
                 setUserPW(res.data.token.rows[0].password)
-                history.push('/');
+                let id = res.data.token.rows[0].id
+                history.push(`/user/${id}`);
             })
             .catch((err) => {
                 console.log(err)

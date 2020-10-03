@@ -2,22 +2,37 @@ import React, { useState } from 'react';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { Link } from 'react-router-dom';
 import { Search, Button, Header } from 'semantic-ui-react';
+import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
+
 import axios from 'axios';
 
 
 
-const LogoArea = ({user}) => {
+const LogoAreaBis = () => {
     const history = useHistory();
-    // const token = localStorage.getItem('token');
 
-    // const [ getLoggedIn, setGetLoggedIn ] = useState(true)
-    const onClickCreate = () => {
-        history.push('/createProfil');
+    /**Get user data */
+    const [ userData, getUserData ] = useState({});
+    let {id} = useParams();
+    const userInfos = () => {
+        axios
+            .get(`/users/${id}` , { 
+                withCredentials: true,
+                headers: {
+                  Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+            .then((res) => {
+                getUserData(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            
     };
-    const onClickConnect = () => {
-        history.push('/connect');
-    };
+    userInfos();
+
     const disconnect = () => {
         const token = localStorage.getItem('token');
         axios
@@ -27,6 +42,7 @@ const LogoArea = ({user}) => {
           }) 
           .then((res) => {
               localStorage.removeItem('token')
+              history.push('/')
           })
           .catch((err) => {
               console.log(err)
@@ -36,7 +52,6 @@ const LogoArea = ({user}) => {
     
 
     return (
-        
         <div className="logo-area">
             <Link to='/'>
                 <img src={logo} alt="Funny quiz logo"/>
@@ -44,16 +59,12 @@ const LogoArea = ({user}) => {
             </Link>
             <Search></Search>
             <div className='profile-buttons'>
-                <Header as='h2'></Header> 
-                
-                <Button color='red' onClick={disconnect}>Déconnexion</Button> 
-                <Button onClick={onClickCreate}>Créer un compte</Button> 
-                <Button onClick={onClickConnect}>Connexion</Button>   
-                    
+                <Header as='h2'>Hello {userData.username} </Header> 
+                <Button color='red' onClick={disconnect}>Déconnexion</Button>       
             </div>
         </div>
     )
 
 };
 
-export default LogoArea;
+export default LogoAreaBis;
