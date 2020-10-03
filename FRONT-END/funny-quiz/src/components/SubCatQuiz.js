@@ -34,13 +34,10 @@ const SubCatQuiz = () => {
 
     let {id} = useParams();
     const [ subCat, setSubCat ] =useState([]);
-    // const url = `http://ec2-54-242-189-29.compute-1.amazonaws.com:1234/quizzes/subcategory/${id}`;
-    const url = `http://localhost:1234/quizzes/subcategory/${id}`;
-
+  
     const subCategories = () => {
-        axios.get(
-            url,
-        )
+        axios.get
+        (`quizzes/subcategory/${id}`)
         .then((res) => {
             setSubCat(res.data);      
         })

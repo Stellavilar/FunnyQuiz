@@ -35,4 +35,20 @@ const subCategoryController = require ('../controllers/subCategoryController');
 
 router.get('/subcategories', subCategoryController.findAll);
 
+/**Users Routes */
+const userController = require ('../controllers/userController');
+const { Router } = require('express');
+
+router.post('/add', userController.add);
+router.get('/users', userController.findAll);
+router.get('/users/:id', userController.findByPk);
+router.patch('/edit/:id', userController.edit);
+router.delete('/delete/:id', userController.delete);
+
+/**Login and Logout routes */
+const loginController = require ('../controllers/loginController');
+
+router.post('/api/login', loginController.login);
+router.get('/api/logout', loginController.logout);
+
 module.exports = router;
