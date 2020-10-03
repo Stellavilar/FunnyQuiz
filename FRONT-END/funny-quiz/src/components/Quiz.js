@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import logo from '../img/FUNNY QUIZ.jpg';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
 
 
@@ -69,8 +71,12 @@ const Quiz = () => {
 
     return (
             <div className="quiz">
+                <Link to='/'>
+                    <img src={logo} alt="Funny quiz logo"/>
+                    <p>Quizs marrants pour les petits et les grands!</p>
+                </Link>
                 <Header as='h2'>Questions</Header>
-                {getQuiz}
+                    {getQuiz}
             </div>
     );
 };

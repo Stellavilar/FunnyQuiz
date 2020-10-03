@@ -97,7 +97,7 @@ const ProfilForm = () => {
                  <Form.Field>
                      <label> Mot de passe</label>
                      <input
-                      type="text"
+                      type="password"
                       name="password"
                       placeholder="8 caractères minimum et un chiffre"
                       value={userProfil.password}

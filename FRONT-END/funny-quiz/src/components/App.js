@@ -12,7 +12,9 @@ import SubCatQuiz from './SubCatQuiz';
 import Slides from './Slides';
 import ProfilForm from './ProfilForm';
 import Login from './Login';
-//import Page404 from './Page404';
+import ProfilPage from './ProfilPage';
+import EditProfile from './EditProfile';
+import Page404 from './Page404';
 
 const App = () => {
   /**Get tags */
@@ -102,16 +104,23 @@ useEffect(users, []);
             <Slides category={category}/>
         </Route>
         <Route exact path='/specificQuiz/:tagId/level/:levelId'>
-            <Header user={user}/>
             <Quiz />
         </Route>
         <Route exact path='/classifiedQuiz/:id'>
-            <Header user={user}/>
             <SubCatQuiz />
         </Route>
         <Route exact path='/createProfil'>
             <ProfilForm />
         </Route>
+        <Route exact path='/profilPage/:id'>
+            <HeaderLoggedIn />
+            <ProfilPage/>
+        </Route>
+        <Route exact path='/editProfile/:id'>
+            <HeaderLoggedIn />
+            <EditProfile/>
+        </Route>
+        <Route><Page404/></Route>
       </Switch>
     </div>
   );

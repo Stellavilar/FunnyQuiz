@@ -35,6 +35,7 @@ const LogoAreaBis = () => {
 
     const disconnect = () => {
         const token = localStorage.getItem('token');
+        
         axios
             .get('api/logout', { headers:{
                 Authorization: 'Bearer ' + token,
@@ -42,7 +43,6 @@ const LogoAreaBis = () => {
           }) 
           .then((res) => {
               localStorage.removeItem('token')
-              history.push('/')
           })
           .catch((err) => {
               console.log(err)
@@ -52,17 +52,21 @@ const LogoAreaBis = () => {
     
 
     return (
-        <div className="logo-area">
-            <Link to='/'>
-                <img src={logo} alt="Funny quiz logo"/>
-                <p>Quizs marrants pour les petits et les grands!</p>
-            </Link>
-            <Search></Search>
-            <div className='profile-buttons'>
-                <Header as='h2'>Hello {userData.username} </Header> 
-                <Button color='red' onClick={disconnect}>Déconnexion</Button>       
+        <>
+            <div className="logo-area">
+                <Link to='/'>
+                    <img src={logo} alt="Funny quiz logo"/>
+                </Link>
+                <Search></Search>
+                <div className='profile-buttons'>
+                    <Header as='h2'>Hello {userData.username} </Header> 
+                    <Button color='red' onClick={disconnect}>Déconnexion</Button>
+                    <Button color='blue' onClick={() => history.push(`/profilPage/${userData.id}`)}>Voir profil</Button>        
+                </div>
             </div>
-        </div>
+            <p className='slogan'>Quizs marrants pour les petits et les grands!</p>
+
+        </>
     )
 
 };
