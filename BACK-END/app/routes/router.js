@@ -51,4 +51,9 @@ const loginController = require ('../controllers/loginController');
 router.post('/api/login', loginController.login);
 router.get('/api/logout', loginController.logout);
 
+/**Search routes */
+const searchController = require ('../controllers/searchController');
+
+router.get('/quiz/subcategory', searchController.subCategory);
+
 module.exports = router;

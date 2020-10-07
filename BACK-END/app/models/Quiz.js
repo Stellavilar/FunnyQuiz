@@ -157,6 +157,24 @@ module.exports = class Quiz {
             res.send(error)
         }
     }
+
+    /**Search by subcategory */
+    static async searchBySubcategory(search) {
+        try {
+            const query = 'SELECT * FROM "subcategory" WHERE "title" LIKE $1;';
+            const values = ['%'+search+'%'];
+            const result = await db.query(query, values);
+            if(result.rowCount == 0){
+                return [];
+            }else{
+                return result.rows;
+            }
+        }
+        catch (error){
+            console.log(error);
+            return false
+        }
+    }
     
 
 };
