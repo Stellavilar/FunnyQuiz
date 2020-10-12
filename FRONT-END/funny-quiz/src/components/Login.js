@@ -30,11 +30,13 @@ const Login = () => {
                 setUserPW(res.data.token.rows[0].password)
                 let id = res.data.token.rows[0].id
                 history.push(`/user/${id}`);
+                window.location.reload(false)
             })
             .catch((err) => {
                 console.log(err)
             })
             formValidation();
+            
     };
 
     const handleChange = (e) => {
@@ -71,7 +73,7 @@ const Login = () => {
                  <Form.Field>
                      <label> Mot de passe</label>
                      <input
-                      type="text"
+                      type="password"
                       name="password"
                       onChange={handleChange}
                       />

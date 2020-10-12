@@ -14,6 +14,7 @@ import ProfilForm from './ProfilForm';
 import Login from './Login';
 import ProfilPage from './ProfilPage';
 import EditProfile from './EditProfile';
+import Footer from './Footer';
 import Page404 from './Page404';
 
 const App = () => {
@@ -78,6 +79,9 @@ const users = () => {
     return users;
 }
 
+/**Get token */
+const token = localStorage.getItem('token')
+
 
 useEffect(tags, []);
 useEffect(levels, []);
@@ -90,37 +94,47 @@ useEffect(users, []);
     <div className="main">
       <Switch>
         <Route exact path='/connect'>
-          <Header user={user}/>
+          {/* {token ? <HeaderLoggedIn /> : <Header user={user}/> } */}
           <Login />
+          <Footer />
         </Route>
         <Route exact path='/'>
-          <Header user={user}/>
+          {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <ItemMenu tag={tag} level={level} />
             <Slides category={category} user={user} />
+            <Footer />
         </Route>
         <Route exact path='/user/:id'>
-          <HeaderLoggedIn />
+          {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <ItemMenu tag={tag} level={level} />
             <Slides category={category}/>
+            <Footer />
         </Route>
         <Route exact path='/specificQuiz/:tagId/level/:levelId'>
+          {/* {token ? <HeaderLoggedIn /> : <Header user={user}/> } */}
             <Quiz />
+            <Footer />
         </Route>
-        <Route exact path='/classifiedQuiz/:id'>
+        <Route exact path='/classifiedQuiz/:id'> 
+          {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <SubCatQuiz />
+            <Footer />
         </Route>
         <Route exact path='/createProfil'>
             <ProfilForm />
+            <Footer />
         </Route>
         <Route exact path='/profilPage/:id'>
-            <HeaderLoggedIn />
+            {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <ProfilPage/>
+            <Footer />
         </Route>
         <Route exact path='/editProfile/:id'>
-            <HeaderLoggedIn />
+            {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <EditProfile/>
+            <Footer />
         </Route>
-        <Route><Page404/></Route>
+        <Route><Page404/><Footer /></Route>
       </Switch>
     </div>
   );

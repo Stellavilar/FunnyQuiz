@@ -42,6 +42,7 @@ const { Router } = require('express');
 router.post('/add', userController.add);
 router.get('/users', userController.findAll);
 router.get('/users/:id', userController.findByPk);
+router.get('/userbytoken', userController.findByToken);
 router.patch('/edit/:id', userController.edit);
 router.delete('/delete/:id', userController.delete);
 

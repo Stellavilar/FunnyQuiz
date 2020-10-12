@@ -76,6 +76,22 @@ module.exports = class User {
         }
     }
 
+    static async findByToken() {
+        try {
+            const query = 'SELECT * FROM "users" WHERE "token" LIKE $1;';
+            const values = ['ey%'];
+            const result = await db.query(query, values);
+            if(result.rowCount < 1 ){
+                return false;
+            }
+            return result.rows;
+        }
+        catch (error) {
+            console.log(error);
+            return error;
+        }
+    }
+
     /**Edit profil user */
     async edit() {
         try{
@@ -141,8 +157,8 @@ module.exports = class User {
 
     static async logout (userId) {
         try {
-            const query = 'UPDATE "users" SET token=$1, updated_at=now() WHERE id=$2;';
-            const values = ['',userId];
+            const query = 'UPDATE "users" SET token=null WHERE id=$1;';
+            const values = [userId];
             const result = await db.query(query, values);
             if(result.rowCount == 1) {
                 return true;

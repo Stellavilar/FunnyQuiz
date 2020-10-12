@@ -1,6 +1,9 @@
 const db = require('../dbconnection');
 
 const Answer = require ('./Answers');
+const Tag = require ('./Tag');
+const User = require ('./User');
+const Level = require ('./Level');
 
 module.exports = class Quiz {
 
@@ -119,6 +122,18 @@ module.exports = class Quiz {
                 const answer = await Answer.findByPk(result.rows[i].answer_id);
                 result.rows[i].answer = answer;
             }
+            for(let i = 0; i < result.rowCount; i++) {
+                const tag = await Tag.findByPk(result.rows[i].tag_id);
+                result.rows[i].tag = tag;
+            }
+            for(let i = 0; i < result.rowCount; i++) {
+                const user = await User.findByPk(result.rows[i].user_id);
+                result.rows[i].user = user;
+            }
+            for(let i = 0; i < result.rowCount; i++) {
+                const level = await Level.findByPk(result.rows[i].level_id);
+                result.rows[i].level = level;
+            }
             if(result.rowCount == 0) {
                 return {"message": "Pas de résultats"};
             }
@@ -146,7 +161,10 @@ module.exports = class Quiz {
                 const answer = await Answer.findByPk(result.rows[i].answer_id);
                 result.rows[i].answer = answer;
             }
-
+            for(let i = 0; i < result.rowCount; i++) {
+                const user = await User.findByPk(result.rows[i].user_id);
+                result.rows[i].user = user;
+            }
             if(result.rowCount == 0) {
                 return {"message": "Pas de résultats"};
             }

@@ -63,6 +63,22 @@ module.exports = {
         }
     },
 
+    /**Find by token */
+    findByToken: async (req,res) => {
+        try {
+            const users = await User.findByToken();
+            if(users) {
+                return res.send(users)
+            }else{
+                return res.status(403).send({ "Error" : "Une erreur s\'est produite"});
+            }
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(403).send(error);
+        }
+    },
+
     /**Find by id */
    
     findByPk: async (req,res) => {
