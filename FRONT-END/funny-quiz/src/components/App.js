@@ -94,7 +94,6 @@ useEffect(users, []);
     <div className="main">
       <Switch>
         <Route exact path='/connect'>
-          {/* {token ? <HeaderLoggedIn /> : <Header user={user}/> } */}
           <Login />
           <Footer />
         </Route>
@@ -111,12 +110,10 @@ useEffect(users, []);
             <Footer />
         </Route>
         <Route exact path='/specificQuiz/:tagId/level/:levelId'>
-          {/* {token ? <HeaderLoggedIn /> : <Header user={user}/> } */}
             <Quiz />
             <Footer />
         </Route>
         <Route exact path='/classifiedQuiz/:id'> 
-          {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <SubCatQuiz />
             <Footer />
         </Route>
@@ -125,7 +122,6 @@ useEffect(users, []);
             <Footer />
         </Route>
         <Route exact path='/profilPage/:id'>
-            {token ? <HeaderLoggedIn /> : <Header user={user}/> }
             <ProfilPage/>
             <Footer />
         </Route>

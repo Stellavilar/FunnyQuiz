@@ -75,7 +75,7 @@ module.exports = class Quiz {
         }
         catch (error) {
             console.log(error);
-            res.send(error)
+            res.send(error);
         }
     }
 
@@ -172,7 +172,7 @@ module.exports = class Quiz {
         }
         catch (error) {
             console.log(error);
-            res.send(error)
+            res.send(error);
         }
     }
 

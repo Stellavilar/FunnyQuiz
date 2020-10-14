@@ -47,10 +47,30 @@ const Quiz = () => {
     const handleClick = () => {
         history.goBack();
     };
-    /**Handle submit score */
+
+    /**Save score */
+    const handleChangeScore = (e) => { console.log(e.target) };
     const handleSubmitScore = (e) => {
         e.preventDefault();
-        console.log(e.target.children[1].innerText)
+        const result = {
+            number: e.target.children[0].valueAsNumber,
+        }        
+        axios
+            .post(`user/${userId}/scores`, result, {
+                headers: {
+                  Authorization: 'Bearer ' + localStorage.getItem('token'),
+                  post: {
+                    'Content-Type': 'multipart/form-data',
+                  },
+                }
+            })
+            .then((res)=> {
+                console.log(res);
+                history.push(`/profilPage/${userId}`)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     };
     /**Get quiz by tag and level */
     let { tagId, levelId } = useParams();
@@ -73,6 +93,7 @@ const Quiz = () => {
 
     /**Get user data */
     const [ userData, setUserData ] = useState({});
+    const [ userId, setUserId ] = useState({});
     const userInfos = () => {
         axios
             .get(`/userbytoken` , { 
@@ -83,6 +104,7 @@ const Quiz = () => {
             })
             .then((res) => {
                 setUserData(res.data[0])
+                setUserId(res.data[0].id)
             })
             .catch((err) => {
                 console.log(err);
@@ -92,6 +114,8 @@ const Quiz = () => {
     userInfos();
     
     useEffect(quizzes, []);
+    useEffect(userInfos, []);
+
    
     const getQuiz = quiz.map((quizzes) => 
         <Segment key={quizzes.id}>
@@ -110,21 +134,30 @@ const Quiz = () => {
             
         </Segment> 
     );
-
+    const token = localStorage.getItem('token');
     return (
             <div className="quiz">
                 <div className="header">
                     <img onClick={handleClick} src={logo} alt="Funny quiz logo"/>
-                    {userData.username ? <p> À toi de jouer {userData.username} !</p> : null}
+                    {token ? <p> À toi de jouer {userData.username} !</p> : <p>À toi de jouer !</p>}
                 </div>
                 <p className="arrow" onClick={handleClick}>&#8678; Retour en arrière</p>
                 <Header as='h2'> Thème : {getTitle} / {getLevel}</Header>
                     {getQuiz}
                 <Form
-                className="score"
+                 className="score"
                  onSubmit={handleSubmitScore}>
-                    <p>Total: Vous avez </p><p>&nbsp;{count}&nbsp;</p><p> points</p>
-                    <Form.Button>Sauvegarder</Form.Button>
+                    <p>Vous avez</p>
+                    <input
+                      style={{border: 'none', width: '7%', fontFamily: 'Grandstander',}}
+                      type="number"
+                      name="number"
+                      value={count}
+                      onChange={handleChangeScore}
+                      />
+                    <p>points</p>
+                    {token ? <Form.Button>Sauvegarder</Form.Button> : <Form.Button disabled >Sauvegarder</Form.Button> }
+                
                 </Form>
                     
             </div>

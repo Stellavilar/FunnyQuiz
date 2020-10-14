@@ -4,6 +4,7 @@ const validatePassword = require ('../utils/password.utils');
 const rounds = 10;
 
 const User = require ('../models/User');
+const Score = require ('../models/Score');
 const { use } = require('../routes/router');
 
 module.exports = {

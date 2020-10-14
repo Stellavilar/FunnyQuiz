@@ -57,4 +57,13 @@ const searchController = require ('../controllers/searchController');
 
 router.get('/quiz/subcategory', searchController.subCategory);
 
+/**Scores routes */
+const scoreController = require ('../controllers/scoreController');
+
+router.get('/scores', scoreController.findAll);
+router.get('/scores/:id', scoreController.findByPk);
+router.get('/scoresbyuser/user/:id', scoreController.findByUser)
+router.post('/user/:id/scores', scoreController.add);
+
+
 module.exports = router;

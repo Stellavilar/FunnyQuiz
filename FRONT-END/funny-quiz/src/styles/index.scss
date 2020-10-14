@@ -3,14 +3,16 @@
 
 $blue: #0048A9;
 $grey: #edeaea;
+$violet:#B186C5;
 $bg: url('../img/img2.png');
 
 body {
   font-family: 'Grandstander', cursive;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0px;
 }
+
 .ui.header {
   font-family: 'Grandstander', cursive;;
 }
@@ -120,7 +122,7 @@ body {
    .ui.header {
      margin-top: 100px;
      font-size: 2em;
-     color: #B186C5;
+     color: $violet;
    }
  
    .ui.checkbox {
@@ -131,7 +133,7 @@ body {
    }
    .ui.button {
      margin: 15px;
-     background-color: #B186C5;
+     background-color: $violet;
      color: white;
    }
    .badAnswer {
@@ -152,8 +154,15 @@ body {
    .ui.form.score {
        display: flex;
        align-items: center;
+       font-size: 2em;
    }
-};
+  //  .ui.form.input {
+  //    width: 5%;
+  //  }
+  //  .ui.form textarea {
+  //   width: 1%;
+  // }
+}
 
 .subcategories {
 
@@ -202,6 +211,8 @@ body {
 .profil-form {
   text-align: center;
   padding: 5px;
+  height: 100vh;
+
 
   img { 
     height: 100px;
@@ -243,10 +254,32 @@ body {
   margin: auto;
   display: flex;
   flex-direction: column;
-
+  min-height: 86vh;
 
   .ui.button {
     align-self: flex-end;
+  }
+  .header {
+    img {
+      height: 100px;
+    }
+  }
+  .arrow {
+    color: $blue;
+    font-size: 1.2em;
+    margin-top: 50px;
+    &:hover{
+     color: green;
+   }
+  }
+  .ui.segment {
+    .ui.header.welcome {
+      color: $violet;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 50px;
+      text-decoration: underline;
+    }
   }
 }
 

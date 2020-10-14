@@ -7,7 +7,7 @@ module.exports = class User {
     id;
     username;
     mail;
-    score;
+    score_id;
     created_at;
     updated_at;
     password;
@@ -16,7 +16,7 @@ module.exports = class User {
         if(params.id) { this.id = params.id}
         if(params.username) { this.username = params.username}
         if(params.mail) { this.mail = params.mail}
-        if(params.score) { this.score = params.score}
+        if(params.score_id) { this.score = params.score_id}
         if(params.created_at) { this.created_at = params.created_at}
         if(params.updated_at) { this.updated_at = params.updated_at}
         if(params.password) { this.password = params.password}
@@ -47,6 +47,7 @@ module.exports = class User {
         try {
             const query = 'SELECT * FROM "users";';
             const result = await db.query(query);
+            
             if(result.rowCount < 1){
                 return false;
             }
@@ -63,9 +64,10 @@ module.exports = class User {
         try {
             const query = 'SELECT * FROM "users" WHERE id=$1';
             const values = [id];
-            const user = await db.query(query, values);
-            if(user.rowCount == 1) {
-                return user.rows[0];
+            const result = await db.query(query, values);
+
+            if(result.rowCount == 1) {
+                return result.rows[0];
             }else{
                 return {"message": "Pas de résultats"};
             }
