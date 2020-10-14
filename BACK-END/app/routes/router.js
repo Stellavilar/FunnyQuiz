@@ -42,6 +42,7 @@ const { Router } = require('express');
 router.post('/add', userController.add);
 router.get('/users', userController.findAll);
 router.get('/users/:id', userController.findByPk);
+router.get('/userbytoken', userController.findByToken);
 router.patch('/edit/:id', userController.edit);
 router.delete('/delete/:id', userController.delete);
 
@@ -55,5 +56,14 @@ router.get('/api/logout', loginController.logout);
 const searchController = require ('../controllers/searchController');
 
 router.get('/quiz/subcategory', searchController.subCategory);
+
+/**Scores routes */
+const scoreController = require ('../controllers/scoreController');
+
+router.get('/scores', scoreController.findAll);
+router.get('/scores/:id', scoreController.findByPk);
+router.get('/scoresbyuser/user/:id', scoreController.findByUser)
+router.post('/user/:id/scores', scoreController.add);
+
 
 module.exports = router;

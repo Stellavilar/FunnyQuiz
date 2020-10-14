@@ -13,7 +13,7 @@ const LogoAreaBis = () => {
     const history = useHistory();
 
     /**Get user data */
-    const [ userData, getUserData ] = useState({});
+    const [ userData, setUserData ] = useState({});
     let {id} = useParams();
     const userInfos = () => {
         axios
@@ -24,7 +24,7 @@ const LogoAreaBis = () => {
                 }
             })
             .then((res) => {
-                getUserData(res.data)
+                setUserData(res.data)
             })
             .catch((err) => {
                 console.log(err);
@@ -34,6 +34,7 @@ const LogoAreaBis = () => {
     userInfos();
 
     const disconnect = () => {
+       
         const token = localStorage.getItem('token');
         
         axios
@@ -43,13 +44,14 @@ const LogoAreaBis = () => {
           }) 
           .then((res) => {
               localStorage.removeItem('token')
+              window.location.reload(false)
           })
           .catch((err) => {
               console.log(err)
           })
           return disconnect;
     };
-    
+  
 
     return (
         <>

@@ -4,6 +4,7 @@ const validatePassword = require ('../utils/password.utils');
 const rounds = 10;
 
 const User = require ('../models/User');
+const Score = require ('../models/Score');
 const { use } = require('../routes/router');
 
 module.exports = {
@@ -56,6 +57,22 @@ module.exports = {
                 return res.status(403).send({ "Error" : "Une erreur s\'est produite"});
             }
 
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(403).send(error);
+        }
+    },
+
+    /**Find by token */
+    findByToken: async (req,res) => {
+        try {
+            const users = await User.findByToken();
+            if(users) {
+                return res.send(users)
+            }else{
+                return res.status(403).send({ "Error" : "Une erreur s\'est produite"});
+            }
         }
         catch (error) {
             console.log(error);
