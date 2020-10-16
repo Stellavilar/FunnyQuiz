@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL = 'http://localhost:1234/';
-// const ec2 = 'http://ec2-54-242-189-29.compute-1.amazonaws.com:1234/
+// axios.defaults.baseURL ='http://ec2-54-242-189-29.compute-1.amazonaws.com:1234/';
 
 const rootReactElement = () => {
   return (

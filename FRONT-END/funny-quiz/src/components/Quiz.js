@@ -141,25 +141,26 @@ const Quiz = () => {
                     <img onClick={handleClick} src={logo} alt="Funny quiz logo"/>
                     {token ? <p> À toi de jouer {userData.username} !</p> : <p>À toi de jouer !</p>}
                 </div>
-                <p className="arrow" onClick={handleClick}>&#8678; Retour en arrière</p>
-                <Header as='h2'> Thème : {getTitle} / {getLevel}</Header>
-                    {getQuiz}
-                <Form
-                 className="score"
-                 onSubmit={handleSubmitScore}>
-                    <p>Vous avez</p>
-                    <input
-                      style={{border: 'none', width: '7%', fontFamily: 'Grandstander',}}
-                      type="number"
-                      name="number"
-                      value={count}
-                      onChange={handleChangeScore}
-                      />
-                    <p>points</p>
-                    {token ? <Form.Button>Sauvegarder</Form.Button> : <Form.Button disabled >Sauvegarder</Form.Button> }
-                
-                </Form>
+                <div className="main-quiz">
+                    <p className="arrow" onClick={handleClick}>&#8678; Retour en arrière</p>
+                    <Header as='h2'> Thème : {getTitle} / {getLevel}</Header>
+                        {getQuiz}
+                    <Form
+                    className="score"
+                    onSubmit={handleSubmitScore}>
+                        <p>Vous avez</p>
+                        <input
+                        style={{border: 'none', width: '7%', fontFamily: 'Grandstander',}}
+                        type="number"
+                        name="number"
+                        value={count}
+                        onChange={handleChangeScore}
+                        />
+                        <p>points</p>
+                        {token ? <Form.Button>Sauvegarder</Form.Button> : <Form.Button disabled >Sauvegarder</Form.Button> }
                     
+                    </Form>
+                </div>
             </div>
     );
 };

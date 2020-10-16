@@ -5,8 +5,11 @@ import { Button, Search } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+import BurgerButton from './BurgerButton';
+import BurgerButtonLoggedIn from './BurgerButtonLoggedIn';
 
-const Header = ({user}) => {
+
+const Header = () => {
     const history = useHistory();
 
     const onClickCreate = () => {
@@ -43,6 +46,8 @@ const Header = ({user}) => {
         history.push(`/classifiedQuiz/${id}`)
     }
     
+    const token = localStorage.getItem('token');
+
     return (
         <>
             <div className="logo-area">
@@ -61,6 +66,7 @@ const Header = ({user}) => {
                     <Button onClick={onClickCreate}>Créer un compte</Button> 
                     <Button onClick={onClickConnect}>Connexion</Button>   
                 </div>
+                { token ? <BurgerButtonLoggedIn/> : <BurgerButton/> }
             </div>
             <p className='slogan'>Quizs marrants pour les petits et les grands!</p>
         </>

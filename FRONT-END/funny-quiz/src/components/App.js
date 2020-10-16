@@ -98,13 +98,13 @@ useEffect(users, []);
           <Footer />
         </Route>
         <Route exact path='/'>
-          {token ? <HeaderLoggedIn /> : <Header user={user}/> }
+          {token ? <HeaderLoggedIn /> : <Header/> }
             <ItemMenu tag={tag} level={level} />
             <Slides category={category} user={user} />
             <Footer />
         </Route>
         <Route exact path='/user/:id'>
-          {token ? <HeaderLoggedIn /> : <Header user={user}/> }
+          {token ? <HeaderLoggedIn /> : <Header/> }
             <ItemMenu tag={tag} level={level} />
             <Slides category={category}/>
             <Footer />
@@ -126,7 +126,7 @@ useEffect(users, []);
             <Footer />
         </Route>
         <Route exact path='/editProfile/:id'>
-            {token ? <HeaderLoggedIn /> : <Header user={user}/> }
+            {token ? <HeaderLoggedIn /> : <Header/> }
             <EditProfile/>
             <Footer />
         </Route>

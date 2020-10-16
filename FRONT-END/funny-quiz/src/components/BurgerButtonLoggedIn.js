@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import logo from '../img/FUNNY QUIZ.jpg';
-import { Link } from 'react-router-dom';
-import { Search, Button, Header } from 'semantic-ui-react';
-import { useParams } from 'react-router';
+import { Dropdown } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
-
+import { useParams } from 'react-router';
 import axios from 'axios';
-import BurgerButtonLoggedIn from './BurgerButtonLoggedIn';
 
-const HeaderLoggedIn = () => {
+const BurgerButtonLoggedIn = () => {
     const history = useHistory();
 
     /**Get user data */
@@ -51,26 +47,16 @@ const HeaderLoggedIn = () => {
           return disconnect;
     };
   
-
     return (
-        <>
-            <div className="logo-area">
-                <Link to='/'>
-                    <img src={logo} alt="Funny quiz logo"/>
-                </Link>
-                <Search></Search>
-                <div className='profile-buttons'>
-                    <Header as='h2'>Hello {userData.username} </Header> 
-                    <Button color='red' onClick={disconnect}>Déconnexion</Button>
-                    <Button color='blue' onClick={() => history.push(`/profilPage/${userData.id}`)}>Voir profil</Button>        
-                </div>
-                <BurgerButtonLoggedIn/>
-            </div>
-            <p className='slogan'>Quizs marrants pour les petits et les grands!</p>
-            
-        </>
-    )
-
+        <div className="burger-button">
+            <Dropdown item text='' icon='bars'>
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => history.push(`/profilPage/${userData.id}`)}>Voir profil</Dropdown.Item>
+                    <Dropdown.Item onClick={disconnect}>Déconnexion</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+        </div>
+    );
 };
 
-export default HeaderLoggedIn;
+export default BurgerButtonLoggedIn;
