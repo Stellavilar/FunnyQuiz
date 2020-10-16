@@ -37,7 +37,6 @@ router.get('/subcategories', subCategoryController.findAll);
 
 /**Users Routes */
 const userController = require ('../controllers/userController');
-const { Router } = require('express');
 
 router.post('/add', userController.add);
 router.get('/users', userController.findAll);
