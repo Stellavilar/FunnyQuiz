@@ -1170,8 +1170,8 @@ INSERT INTO public.users (id, username, mail, score_id, created_at, updated_at, 
 INSERT INTO public.users (id, username, mail, score_id, created_at, updated_at, password, token) VALUES (11, 'Sylou', 'sylou@yahoo.fr',	0,	'2020-10-07 23:02:29.84665', '2020-10-10 23:23:44.936663',	'$2b$10$j3bzirGwgLaPfcOpKw4WJ.eiLbz900tO8BXevbhqi1GuoCL3H1uVC',	NULL);
 INSERT INTO public.users (id, username, mail, score_id, created_at, updated_at, password, token) VALUES (9,	'Stellou',	'machin@machin.fr',	0,	'2020-10-02 11:09:53.526737',	'2020-10-03 22:27:57.069728',	'$2b$10$b1QkQ7pB0qeTdVCStxBPGeOyXNcut9NkcqhT8qIiE/ZiQ8vAQiRM2',	NULL);
 
-INSERT INTO public.score (id, number, updated_at, user_id, created_at) VALUES (13, 3, NULL, 9, '2020-10-13 09:51:51.811889+02');
-INSERT INTO public.score (id, number, updated_at, user_id, created_at) VALUES (14, 1, NULL,	11,	'2020-10-13 11:01:31.941828+02');
+INSERT INTO public.score (number, updated_at, user_id, created_at) VALUES (3, NULL, 9, '2020-10-13 09:51:51.811889+02');
+INSERT INTO public.score (number, updated_at, user_id, created_at) VALUES (1, NULL,	11,	'2020-10-13 11:01:31.941828+02');
 
 
 SELECT pg_catalog.setval('public.score_id_seq', 24, true);
