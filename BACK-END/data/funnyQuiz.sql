@@ -1211,8 +1211,8 @@ ALTER TABLE ONLY public.quiz_has_subcategory
 -- Name: quiz quiz_pkey; Type: CONSTRAINT; Schema: public; Owner: funnyquizz
 --
 
-ALTER TABLE ONLY public.quiz
-    ADD CONSTRAINT quiz_pkey PRIMARY KEY (id);
+-- ALTER TABLE ONLY public.quiz
+--     ADD CONSTRAINT quiz_pkey PRIMARY KEY (id);
 
 
 --
@@ -1250,8 +1250,7 @@ ALTER TABLE ONLY public.quiz_has_subcategory
 ALTER TABLE ONLY public.quiz_has_subcategory
     ADD CONSTRAINT quiz_has_subcategory_subcategory_id_fkey FOREIGN KEY (subcategory_id) REFERENCES public.subcategory(id);
 
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
 
 
 
