@@ -32,6 +32,32 @@ const HeaderLoggedIn = () => {
     };
     userInfos();
 
+    /**Search */
+    const [ searchText, setSearchText ] = useState("");
+    const [ results, setResults ] = useState({});
+    
+    const getResults = (e) => {
+        const text = searchText;
+        const SEARCH_URL = `quiz/subcategory/?q=${text}`;
+        axios
+            .get(SEARCH_URL)
+            .then((res) => {
+                setResults(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+            return getResults;  
+    };
+    getResults();
+
+    const handleChange = (e) => {
+        setSearchText(e.target.value);
+    };
+    const getQuiz = (id) => {
+        history.push(`/classifiedQuiz/${id}`)
+    };
+
     const disconnect = () => {
        
         const token = localStorage.getItem('token');
@@ -58,7 +84,14 @@ const HeaderLoggedIn = () => {
                 <Link to='/'>
                     <img src={logo} alt="Funny quiz logo"/>
                 </Link>
-                <Search></Search>
+                <Search
+                value={searchText}
+                onSearchChange={handleChange}
+                results={results}
+                onResultSelect={(e, data) =>
+                   getQuiz(data.result.id)
+                  }
+                 />
                 <div className='profile-buttons'>
                     <Header as='h2'>Hello {userData.username} </Header> 
                     <Button color='red' onClick={disconnect}>Déconnexion</Button>
