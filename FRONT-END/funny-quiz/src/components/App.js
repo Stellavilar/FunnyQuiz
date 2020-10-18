@@ -126,7 +126,6 @@ useEffect(users, []);
             <Footer />
         </Route>
         <Route exact path='/editProfile/:id'>
-            {token ? <HeaderLoggedIn /> : <Header/> }
             <EditProfile/>
             <Footer />
         </Route>

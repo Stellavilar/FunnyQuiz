@@ -44,7 +44,13 @@ const EditProfile = () => {
             setErrorMessage(null)
         }
         return formValidation;
-    }
+    };
+
+     /**Handle click on cancel button*/
+     const handleClick = () => {
+        history.goBack();
+    };
+
     return (
         <div className='profil-form'>
             <Link to='/'>
@@ -77,12 +83,9 @@ const EditProfile = () => {
                  </Form.Field>
                  <div className="buttons">
                     <Button color='green' type='submit'>Valider</Button>
-                        <Link to={'/'}>
-                            <Button color='red'>Annuler</Button>
-                        </Link>
                 </div>
             </Form>
-
+            <Button color='red' onClick={handleClick}>Annuler</Button> 
         </div>
     )
 };
