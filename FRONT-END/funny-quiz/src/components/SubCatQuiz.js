@@ -3,7 +3,7 @@ import axios from 'axios';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
+import { Segment, Header, Form, Checkbox, Dimmer, Loader } from 'semantic-ui-react';
 
 const SubCatQuiz = () => {
     const history = useHistory();
@@ -17,6 +17,8 @@ const SubCatQuiz = () => {
     const handleChange = (e, { value }) => setState({value});
     /**Count score */
     const [ count, setCount ] = useState(0);
+    /**Loader */
+    const [ loading, setLoading ] = useState(false);
 
     /**Handle submit form */
     const handleSubmit = (e) => {
@@ -53,7 +55,8 @@ const SubCatQuiz = () => {
         axios.get
         (`quizzes/subcategory/${id}`)
         .then((res) => {
-            setSubCat(res.data);      
+            setSubCat(res.data);
+            setLoading(true);      
         })
         .catch((err) => {
             console.log(err)
@@ -89,7 +92,7 @@ const SubCatQuiz = () => {
     const handleSubmitScore = (e) => {
         e.preventDefault();
         const result = {
-            number: e.target.children[1].valueAsNumber,
+            number: e.target.children[0].valueAsNumber,
         }
         axios
             .post(`user/${userId}/scores`, result, {
@@ -140,6 +143,7 @@ const SubCatQuiz = () => {
             <div className="main-quiz">
                 <p className="arrow" onClick={handleClick}>&#8678; Retour en arrière</p>
                 <Header as='h2'>Questions</Header>
+                {loading ? [] :  <Dimmer active inverted><Loader inverted /></Dimmer> }
                 {getQuiz}
                 <Form
                     className="score"

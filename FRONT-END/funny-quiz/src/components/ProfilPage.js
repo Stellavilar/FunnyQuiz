@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Segment, Button } from 'semantic-ui-react';
+import { Header, Segment, Button, Dimmer, Loader } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import logo from '../img/FUNNY QUIZ.jpg';
@@ -22,7 +22,8 @@ const ProfilPage = () => {
                 }
             })
             .then((res) => {
-                getUserData(res.data)
+                getUserData(res.data);                
+                setLoading(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -41,7 +42,7 @@ const ProfilPage = () => {
             }
         })
         .then((res) => {
-            setUserHistory(res.data)
+            setUserHistory(res.data);
         })
         .catch((err) => {
             console.log(err);
@@ -57,6 +58,9 @@ const ProfilPage = () => {
         history.push(`/user/${id}`);
    };
 
+    /**Loader */
+    const [ loading, setLoading ] = useState(false);
+
    useEffect(getHistory, []);
    useEffect(userProfil, []);
 
@@ -68,6 +72,7 @@ const ProfilPage = () => {
             </div>
             <p className="arrow" onClick={handleClick}>&#8678; Retour à la page d'accueil</p>
             <Segment>
+                {loading ? [] :  <Dimmer active inverted><Loader inverted /></Dimmer> }
                 <Header as='h2' className='welcome'>Bienvenue sur ton Profil {userData.username}!</Header>
                 <Header as='h2'>Voici ton historique de jeux:</Header>
                 { userHistory ? <ul>{getHistoryData}</ul> : <p>Erreur</p>}

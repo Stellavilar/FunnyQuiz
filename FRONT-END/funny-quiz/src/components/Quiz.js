@@ -3,7 +3,7 @@ import axios from 'axios';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
-import { Segment, Header, Form, Checkbox } from 'semantic-ui-react';
+import { Segment, Header, Form, Checkbox, Dimmer, Loader } from 'semantic-ui-react';
 
 
 const Quiz = () => {
@@ -20,6 +20,8 @@ const Quiz = () => {
     const [ getLevel, setGetLevel ] = useState('');
     /**Count score */
     const [ count, setCount ] = useState(0);
+    /**Loader */
+    const [ loading, setLoading ] = useState(false);
 
     /**Handle submit form */
     const handleSubmit = (e) => {
@@ -81,9 +83,10 @@ const Quiz = () => {
         axios
             .get(`tags/${tagId}/levels/${levelId}`)
             .then((res) => {
-                setQuiz(res.data)
-                setGetTitle(res.data[0].tag.title)
-                setGetLevel(res.data[0].level.title)
+                setQuiz(res.data);
+                setGetTitle(res.data[0].tag.title);
+                setGetLevel(res.data[0].level.title);
+                setLoading(true);
             })
             .catch((err) => {
                 console.log(err)
@@ -142,6 +145,7 @@ const Quiz = () => {
                 <div className="main-quiz">
                     <p className="arrow" onClick={handleClick}>&#8678; Retour en arrière</p>
                     <Header as='h2'> Thème : {getTitle} / {getLevel}</Header>
+                        {loading ? [] :  <Dimmer active inverted><Loader inverted /></Dimmer> }
                         {getQuiz}
                     <Form
                     className="score"
