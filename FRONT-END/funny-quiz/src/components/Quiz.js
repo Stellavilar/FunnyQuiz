@@ -53,8 +53,8 @@ const Quiz = () => {
     const handleSubmitScore = (e) => {
         e.preventDefault();
         const result = {
-            number: e.target.children[0].valueAsNumber,
-        }        
+            number: e.target.children[1].valueAsNumber,
+        }    
         axios
             .post(`user/${userId}/scores`, result, {
                 headers: {
@@ -72,6 +72,7 @@ const Quiz = () => {
                 console.log(err);
             })
     };
+  
     /**Get quiz by tag and level */
     let { tagId, levelId } = useParams();
     const [ quiz, setQuiz ] = useState ([]);
@@ -87,8 +88,6 @@ const Quiz = () => {
             .catch((err) => {
                 console.log(err)
             })
-
-        return quizzes;
     };
 
     /**Get user data */
@@ -111,13 +110,11 @@ const Quiz = () => {
             })
             
     };
-    userInfos();
     
     useEffect(quizzes, []);
     useEffect(userInfos, []);
 
-   
-    const getQuiz = quiz.map((quizzes) => 
+    const getQuiz = quiz.map((quizzes) =>
         <Segment key={quizzes.id}>
             <li>{quizzes.question}</li>
             <Form
@@ -134,6 +131,7 @@ const Quiz = () => {
             
         </Segment> 
     );
+   
     const token = localStorage.getItem('token');
     return (
             <div className="quiz">

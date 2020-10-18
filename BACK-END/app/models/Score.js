@@ -66,12 +66,12 @@ module.exports= class Score {
                 const user = await User.findByPk(result.rows[i].user_id);
                 result.rows[i].user = user;
             }
-
-            if(result.rowCount > 0) {
-                return result.rows;
-            }else{
-                return {"message": "Pas de résultats"};
-            }
+            return result.rows
+            // if(result.rowCount > 0) {
+            //     return result.rows;
+            // }else{
+            //     return {"message": "Pas de résultats"};
+            // }
         }
         catch (error) {
             console.log(error);

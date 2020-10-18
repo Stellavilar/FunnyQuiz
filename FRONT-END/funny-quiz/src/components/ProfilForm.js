@@ -31,7 +31,6 @@ const ProfilForm = () => {
         e.preventDefault(); 
         axios.post('add', userProfil)
             .then((res) => {
-                console.log(res)
                 history.push('/');
             })
             .catch((err) => {

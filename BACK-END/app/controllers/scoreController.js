@@ -38,9 +38,9 @@ module.exports = scoreController = {
                 return res.status('403').send({"erreur": "Il manque un paramètre pour effectuer la demande"});
             }
                const scores = await Score.findByUser(id);
-               if(scores == false) {
-                return res.send({"error": "Pas de résultat trouvé"});
-            }
+            //    if(scores == false) {
+            //     return res.send({"error": "Pas de résultat trouvé"});
+            // }
             return res.send(scores);
         }
         catch (error) {

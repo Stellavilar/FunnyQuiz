@@ -41,12 +41,13 @@ const ProfilPage = () => {
             }
         })
         .then((res) => {
-            setUserHistory(res.data)            
+            setUserHistory(res.data)
         })
         .catch((err) => {
             console.log(err);
         })
    };
+ 
 
    const getHistoryData = userHistory.map((historyData) => 
         <li key={historyData.id}>{new Intl.DateTimeFormat('fr-FR').format(new Date(historyData.created_at))}: {historyData.number} points</li>
@@ -69,7 +70,8 @@ const ProfilPage = () => {
             <Segment>
                 <Header as='h2' className='welcome'>Bienvenue sur ton Profil {userData.username}!</Header>
                 <Header as='h2'>Voici ton historique de jeux:</Header>
-                <ul>{getHistoryData}</ul>
+                { userHistory ? <ul>{getHistoryData}</ul> : <p>Erreur</p>}
+               
             </Segment>
             <Button onClick={() => history.push(`/editprofile/${userData.id}`)}  >Modifier le profil</Button>
         </div>
