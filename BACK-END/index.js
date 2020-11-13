@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '/Users/Stelou/PROJETS JS/REACT/FunnyQuiz/.env'});
 const express = require ('express');
 const session = require ('express-session');
 const bodyParser = require('body-parser');

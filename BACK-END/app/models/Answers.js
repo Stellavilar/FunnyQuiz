@@ -17,16 +17,13 @@ module.exports = class Answer {
     /**Find all answers */
     static async findAll() {
         try {
-            const query = 'SELECT * FROM "answer"';
+            const query = 'SELECT * FROM "answer";';
             const answers = await db.query(query);
-            if(answers.rowCount < 1) {
-                return { "message" : "Pas de résultats" };
-            }
+            
             return answers.rows;
         }
         catch (error){
             console.log(error);
-            res.send(error)
         }
 
     }
@@ -36,15 +33,10 @@ module.exports = class Answer {
             const query = 'SELECT * FROM "answer" WHERE id=$1';
             const values = [id];
             const result = await db.query(query,values);
-            if(result.rowCount == 1) {
-                return result.rows[0];
-            }else{
-                return {"message": "Pas de résultats"};
-            }
+            return result.rows[0];
         }
         catch (error){
             console.log(error);
-            res.send(error)
         }
     }
 

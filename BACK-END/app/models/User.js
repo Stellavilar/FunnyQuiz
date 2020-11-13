@@ -48,14 +48,10 @@ module.exports = class User {
             const query = 'SELECT * FROM "users";';
             const result = await db.query(query);
             
-            if(result.rowCount < 1){
-                return false;
-            }
             return result.rows;
         }
         catch (error) {
             console.log(error);
-            return error;
         }
     }
 
