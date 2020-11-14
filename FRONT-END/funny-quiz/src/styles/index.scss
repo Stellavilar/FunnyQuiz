@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap');
+
+
+$blue: #0048A9;
+$grey: #edeaea;
+$violet:#B186C5;
+$bg: url('../img/img2.png');
+
+body {
+  font-family: 'Grandstander', cursive;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+}
+
+.ui.header {
+  font-family: 'Grandstander', cursive;;
+}
+
+/* Desktop Version*/
+
+.dashboard {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
+/*Header*/
+.logo-area {
+  text-align: center;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img { 
+    height: 90px;
+  }
+
+  .profile-buttons {
+    .ui.button {
+      background-color: $blue;
+      color: $grey;
+      transition: 0.25s;
+      &:hover{
+        background-color: $grey;
+        color: $blue;
+      }
+    }
+  }
+
+  .burger-button {
+    display: none;
+  }
+  
+}
+.slogan{
+  font-size: 1.7em;
+  font-weight: bold;
+  color: $blue;
+  text-align: center;
+  margin: 70px;
+  
+}
+.head {
+  padding: 2em;
+  width: 100vw;
+  margin-bottom: 100px;
+
+  .ui.menu {
+    display: flex;
+    border: none;
+    box-shadow: none;
+    margin-left: 5px;
+  }
+  .ui.dropdown {
+    font-size: 18px;
+    font-family:  'Grandstander', cursive;
+    
+  }
+  .ui.dropdown.link.item{
+    width:12.4%;
+  }
+  .ui.search {
+    display: flex;
+    margin-left: 10em;
+  }
+ 
+}
+
+/*Quizzes pages*/
+.quiz {
+  padding: 5em;
+  display: flex;
+  flex-direction: column;
+
+   li {
+     list-style: none;
+     margin-bottom: 1em;
+     font-size: 1.3em;
+   }
+   img { 
+    height: 100px;
+   }
+   .header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     
+     p {
+       font-size: 1.5em;
+       color: $blue;
+     }
+   }
+   .arrow {
+     color: $blue;
+     font-size: 1.2em;
+     margin-top: 50px;
+     &:hover{
+      color: green;
+    }
+   }
+   .ui.header {
+     margin-top: 100px;
+     font-size: 2em;
+     color: $violet;
+   }
+ 
+   .ui.checkbox {
+     margin-right: 1.5em;
+   }
+   .ui.segment {
+     width: 80%;
+   }
+   .ui.button {
+     margin: 15px;
+     background-color: $violet;
+     color: white;
+   }
+   .badAnswer {
+     color: #930224;
+     font-size: 1.2em;
+     font-weight: bold;
+     text-align: center;
+   }
+   .goodAnswer {
+     color: #0c7f06;
+     font-size: 1.2em;
+     font-weight: bold;
+     text-align: center;
+   }
+   .noAnswer {
+     color: red;
+   }
+   .ui.form.score {
+       display: flex;
+       align-items: center;
+       font-size: 2em;
+   }
+  
+}
+
+.subcategories {
+
+  padding: 5em;
+
+   li {
+     list-style: none;
+     margin-bottom: 1em;
+   }
+   .ui.checkbox {
+     margin-right: 1.5em;
+   }
+}
+
+/*Slides*/
+.slides {
+  width: 65%;
+  border-radius: 20px;
+  margin: auto;
+  
+  .carousel{
+    display: flex;
+    align-items: center;
+    background-image: $bg;
+    
+
+    p {
+      font-size: 5em;
+      margin:auto;
+      background: linear-gradient(to right, #000, rgba(255, 255, 255, 1));
+      background-clip: text;
+      color: transparent;
+      transition: all 5s;
+		
+      &:hover {
+        background: linear-gradient(to right, $blue, rgba(255, 255, 255, 1));
+        background-clip: text;
+        color: transparent;
+      }
+	
+    }
+  }
+}
+
+/*Profil form*/
+.profil-form {
+  text-align: center;
+  padding: 5px;
+  height: 100vh;
+
+
+  img { 
+    height: 100px;
+  }
+  p{
+    font-size: 20px;
+    font-weight: bold;
+    color: $blue;
+  }
+
+  .ui.header {
+    margin-top: 100px;
+    font-family: 'Grandstander', cursive;
+    color: #a52a2a;
+  }
+
+  .ui.form {
+  
+    margin: 60px;
+
+    .field {
+      width: 40%;
+      margin: auto;
+    }
+
+    .buttons {
+      margin: 25px;
+    }
+    .error {
+      font-size: 0.8em;
+    }
+
+  }
+}
+
+/*Profil page*/
+.profil-page {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 86vh;
+
+  .ui.button {
+    align-self: flex-end;
+  }
+  .header {
+    img {
+      height: 100px;
+    }
+  }
+  .arrow {
+    color: $blue;
+    font-size: 1.2em;
+    margin-top: 50px;
+    &:hover{
+     color: green;
+   }
+  }
+  .ui.segment {
+
+    background-color: $grey;
+
+    .ui.header.welcome {
+      color: $blue;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 50px;
+      text-decoration: underline;
+    }
+  }
+}
+
+/*Footer*/
+.footer {
+  height: 50px;
+  background-color: #000;
+  color: $grey;
+  text-align: center;
+  font-size: 1.4em;
+  padding-top: 15px;
+  margin-top: 80px;
+}
+
+/*Mobile version*/
+@media only screen and (max-width: 768px) {
+  
+  .logo-area {
+    
+    display: flex;
+    flex-direction: row;
+
+    .ui.icon.input {
+      width: 90px;
+    }
+
+    img {
+      height: 50px;
+    }
+   
+    .profile-buttons {
+      display: none;
+    }
+    .burger-button {
+      display: block;
+      i {
+        font-size: 2.5em;
+        margin-top: .5em;
+        color: $blue;
+      }
+  
+      .menu.transition.visible {
+        position: fixed;
+        top: 5em;
+        left: 0;
+        width: 100vw;
+        min-height: calc(100vh-5em);
+        border-radius: 0;
+  
+        .item {
+          text-align: center;
+          color: $blue;
+          font-weight: bold;
+          border-bottom: 1px solid;
+          padding: 1.3em 0 !important;
+        }
+  
+        .item:last-child {
+          border: none;
+        }
+      }
+    }
+
+  }
+  .head {
+  
+    .ui.menu {
+      display: flex;
+      flex-direction: column;
+      border: none;
+    }
+    .ui.dropdown.link.item{
+      width:70%;
+      border-radius: 5px;
+    }
+  }
+  .slogan {
+    font-size: 1em;
+    margin: 20px;
+  }
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .ui.menu {
+      width: 15em;
+
+      .ui.dropdown>.text {
+        font-size: 0.9em;
+      }
+
+    }
+  }
+  .slides {
+    width: 100%;
+    .react-slideshow-container {
+      margin: 20px;
+    }
+    .carousel {
+      p {
+        font-size: 2em;
+        margin:auto;
+      }
+    }
+  }
+  .quiz {
+    padding: 0.5em;
+    
+    .main-quiz {
+      background-color: $grey;
+    }
+
+    .header {
+      p {
+        font-size: 1em;
+      }
+    }
+    .arrow {
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .ui.segment {
+      width: 100%;
+      font-size: 0.8em;
+    }
+    .ui.header {
+      font-size: 1.3em;
+      margin: 30px;
+      color: $blue;
+    }
+    .ui.form {
+      .ui.radio.checkbox{
+        label {
+          font-size: 0.8em;
+        }
+      }
+    }
+    img {
+      height: 50px;
+    }
+    .ui.form.score {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+  }
+    .slogan {
+      display: none;
+    }
+  }
+  .profil-page {
+
+    .header {
+      img {
+        height: 50px;
+      }
+    text-align: center;
+    }
+
+    .arrow {
+      font-size: 0.9em;
+    }
+    .ui.segment {
+      .ui.header.welcome {
+        font-size: 1.2em;
+      }
+      .ui.header {
+        font-size: 1em;
+      }
+    }
+  }
+  .profil-form {
+
+    img {
+      height: 50px;
+    }
+    p{
+      display: none;
+    }
+    .ui.header {
+      font-size: 1.3em;
+    }
+  }
+  .footer {
+    font-size: 1em;
+  }
+
+}
