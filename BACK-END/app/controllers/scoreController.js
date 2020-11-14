@@ -53,10 +53,8 @@ module.exports = scoreController = {
     add: async (req,res) => {
         try {
             const user_id = req.params.id;
-            const { number } = req.body;
-            if (!number) {
-                return res.send('Vous n\'avez pas renseigné tous les éléments nécessaires');
-            }
+            const { number, tag_id, level_id, subcategory_id } = req.body;
+            
             const user = await User.findByPk(user_id);
             if(user == false) {
                 return res.send({"Error" : "Pas d'utilisateur trouvé"});
@@ -64,6 +62,9 @@ module.exports = scoreController = {
             const score = new Score({
                 number,
                 user_id,
+                tag_id,
+                level_id,
+                subcategory_id
             });
             //Save new score
             const result = await score.save();

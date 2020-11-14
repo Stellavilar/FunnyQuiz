@@ -270,8 +270,11 @@ body {
    }
   }
   .ui.segment {
+
+    background-color: $grey;
+
     .ui.header.welcome {
-      color: $violet;
+      color: $blue;
       font-size: 2em;
       text-align: center;
       margin-bottom: 50px;

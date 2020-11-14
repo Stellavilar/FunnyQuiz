@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Segment, Button, Dimmer, Loader, Confirm } from 'semantic-ui-react';
+import { Header, Segment, Button, Dimmer, Loader, Confirm, List } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import logo from '../img/FUNNY QUIZ.jpg';
@@ -44,6 +44,8 @@ const ProfilPage = () => {
         })
         .then((res) => {
             setUserHistory(res.data);
+            console.log(res.data[0].user)
+            console.log(res.data)
         })
         .catch((err) => {
             console.log(err);
@@ -52,7 +54,19 @@ const ProfilPage = () => {
  
 
    const getHistoryData = userHistory.map((historyData) => 
-        <li key={historyData.id}>{new Intl.DateTimeFormat('fr-FR').format(new Date(historyData.created_at))}: {historyData.number} points</li>
+        <List key={historyData.id}>
+            <List.Item>
+            <List.Icon name='check square outline' />
+                <List.Content>
+                    <List.Header as='h4' style={{color: historyData.tag.color}}>{historyData.tag.title}</List.Header>
+                    <List.Header as='h4' style={{color: historyData.level.color}}>{historyData.level.title}</List.Header>
+                    <List.Description>
+                    Tu as obtenu {historyData.number} points le {new Intl.DateTimeFormat('fr-FR').format(new Date(historyData.user.created_at))}
+                    </List.Description>
+                </List.Content>
+            </List.Item>
+        </List>
+        // <li key={historyData.id}>{new Intl.DateTimeFormat('fr-FR').format(new Date(historyData.user.created_at))}: {historyData.number} points</li>
    );
 
    const handleClick = () => {

@@ -56,7 +56,9 @@ const Quiz = () => {
         e.preventDefault();
         const result = {
             number: e.target.children[1].valueAsNumber,
-        }    
+            tag_id: tagId,
+            level_id: levelId
+        }   
         axios
             .post(`user/${userId}/scores`, result, {
                 headers: {
@@ -87,6 +89,7 @@ const Quiz = () => {
                 setGetTitle(res.data[0].tag.title);
                 setGetLevel(res.data[0].level.title);
                 setLoading(true);
+                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)

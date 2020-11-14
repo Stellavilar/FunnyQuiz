@@ -34,6 +34,8 @@ router.get('/answers/:id', answerController.findByPk);
 const subCategoryController = require ('../controllers/subCategoryController');
 
 router.get('/subcategories', subCategoryController.findAll);
+router.get('/subcategory/:id', subCategoryController.findByPk);
+
 
 /**Users Routes */
 const userController = require ('../controllers/userController');

@@ -1,5 +1,8 @@
 const db = require ('../dbconnection');
 const User = require ('./User');
+const Tag = require ('./Tag');
+const Level = require ('./Level');
+const SubCategory = require ('./SubCategory');
 
 module.exports= class Score {
 
@@ -8,6 +11,9 @@ module.exports= class Score {
     created_at;
     updated_at;
     user_id;
+    tag_id;
+    level_id;
+    subcategory_id;
 
     constructor(params) {
         if(params.id) { this.id = params.id}
@@ -15,6 +21,11 @@ module.exports= class Score {
         if(params.created_at) { this.created_at = params.created_at}
         if(params.updated_at) { this.updated_at = params.updated_at}
         if(params.user_id) { this.user_id = params.user_id}
+        if(params.tag_id) { this.tag_id = params.tag_id}
+        if(params.level_id) { this.level_id = params.level_id}
+        if(params.subcategory_id) { this.subcategory_id = params.subcategory_id}
+
+
     };
 
     static async findAll() {
@@ -66,12 +77,20 @@ module.exports= class Score {
                 const user = await User.findByPk(result.rows[i].user_id);
                 result.rows[i].user = user;
             }
+            for(let i = 0; i < result.rowCount; i++) {
+                const tag = await Tag.findByPk(result.rows[i].tag_id);
+                result.rows[i].tag = tag;
+            }
+            for(let i = 0; i < result.rowCount; i++) {
+                const level = await Level.findByPk(result.rows[i].level_id);
+                result.rows[i].level = level;
+            }
+            for(let i = 0; i < result.rowCount; i++) {
+                const subCategory = await SubCategory.findByPk(result.rows[i].subCategory_id);
+                result.rows[i].subCategory = subCategory;
+            }
             return result.rows
-            // if(result.rowCount > 0) {
-            //     return result.rows;
-            // }else{
-            //     return {"message": "Pas de résultats"};
-            // }
+            
         }
         catch (error) {
             console.log(error);
@@ -82,8 +101,8 @@ module.exports= class Score {
 
     async save() {
         try {
-            const query = 'INSERT INTO "score" (number, user_id) VALUES ($1,$2) RETURNING *;';
-            const values = [ this.number, this.user_id ];
+            const query = 'INSERT INTO "score" (number, user_id, tag_id, level_id, subcategory_id) VALUES ($1,$2,$3,$4,$5) RETURNING *;';
+            const values = [ this.number, this.user_id, this.tag_id, this.level_id, this.subcategory_id ];
             const result = await db.query(query, values);
             if(result.rowCount != 1) {
                 return false

@@ -32,5 +32,19 @@ module.exports = class SubCategory {
             res.send(error)
         }
     }
+    /**Find by pk */
+    static async findByPk(id) {
+        try {
+            const query = 'SELECT * FROM "subcategory" WHERE id=$1';
+            const values = [id];
+            const result = await db.query(query,values);
+            return result.rows[0];
+            
+        }
+        catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    }
     
 };
