@@ -86,8 +86,8 @@ module.exports= class Score {
                 result.rows[i].level = level;
             }
             for(let i = 0; i < result.rowCount; i++) {
-                const subCategory = await SubCategory.findByPk(result.rows[i].subCategory_id);
-                result.rows[i].subCategory = subCategory;
+                const subcategory = await SubCategory.findByPk(result.rows[i].subcategory_id);
+                result.rows[i].subcategory = subcategory;
             }
             return result.rows
             

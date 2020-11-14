@@ -92,7 +92,8 @@ const SubCatQuiz = () => {
     const handleSubmitScore = (e) => {
         e.preventDefault();
         const result = {
-            number: e.target.children[0].valueAsNumber,
+            number: e.target.children[1].valueAsNumber,
+            subcategory_id: id,
         }
         axios
             .post(`user/${userId}/scores`, result, {

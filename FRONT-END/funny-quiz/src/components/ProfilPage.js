@@ -58,10 +58,11 @@ const ProfilPage = () => {
             <List.Item>
             <List.Icon name='check square outline' />
                 <List.Content>
+                    { historyData.subcategory ? <List.Header as='h4' style={{color: historyData.subcategory.color}}>{historyData.subcategory.title}</List.Header> : null}
                     <List.Header as='h4' style={{color: historyData.tag.color}}>{historyData.tag.title}</List.Header>
                     <List.Header as='h4' style={{color: historyData.level.color}}>{historyData.level.title}</List.Header>
                     <List.Description>
-                    Tu as obtenu {historyData.number} points le {new Intl.DateTimeFormat('fr-FR').format(new Date(historyData.user.created_at))}
+                    Tu as obtenu {historyData.number} point(s) le {new Intl.DateTimeFormat('fr-FR').format(new Date(historyData.user.created_at))}
                     </List.Description>
                 </List.Content>
             </List.Item>
