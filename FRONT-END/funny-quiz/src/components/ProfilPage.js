@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Segment, Button, Dimmer, Loader } from 'semantic-ui-react';
+import { Header, Segment, Button, Dimmer, Loader, Confirm } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import logo from '../img/FUNNY QUIZ.jpg';
@@ -9,6 +9,7 @@ import axios from 'axios';
 
 
 const ProfilPage = () => {
+
     const history = useHistory();
 
     const [ userData, getUserData ] = useState([]);
@@ -61,6 +62,42 @@ const ProfilPage = () => {
     /**Loader */
     const [ loading, setLoading ] = useState(false);
 
+    /**Delete account */
+    const [ getOpen, setGetOpen ] = useState(false);
+    const onClickDelete = () => {
+        /**first disconnect */
+        const token = localStorage.getItem('token');
+        axios
+            .get('api/logout', { headers:{
+                Authorization: 'Bearer ' + token,
+            },        
+          }) 
+          .then((res) => {
+              localStorage.removeItem('token');
+              window.location.reload(false);
+            setGetOpen(false);
+              /**Then delete account */
+              deleteAccount();
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+          history.push('/');
+    };
+    const handleCancel = () => {
+        setGetOpen(false);
+    };
+    const deleteAccount = () => {
+        axios.delete(`delete/${id}`)
+        .then((res) =>{
+            window.location.reload(false)
+        })
+        .catch((err) =>{
+            console.log(err);
+        })
+        return deleteAccount;
+    };
+
    useEffect(getHistory, []);
    useEffect(userProfil, []);
 
@@ -78,7 +115,18 @@ const ProfilPage = () => {
                 { userHistory ? <ul>{getHistoryData}</ul> : <p>Erreur</p>}
                
             </Segment>
-            <Button onClick={() => history.push(`/editprofile/${userData.id}`)}  >Modifier le profil</Button>
+            <div className='buttons'>
+                <Button onClick={() => history.push(`/editprofile/${userData.id}`)}  >Modifier le profil</Button>
+                <Button color='red' onClick={() =>setGetOpen(true)}>Supprimer le profil</Button>
+            </div>
+            <Confirm 
+                open={getOpen}
+                onCancel={handleCancel}
+                onConfirm={onClickDelete}
+                content=' Êtes-vous bien sûr(e) de vouloir supprimer votre profil?'
+                cancelButton='Annuler'
+                confirmButton='OK'
+            />
         </div>
 
     );

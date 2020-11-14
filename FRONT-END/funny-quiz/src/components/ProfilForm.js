@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../img/FUNNY QUIZ.jpg';
 import { Link } from 'react-router-dom';
-import { Button, Header, Form } from 'semantic-ui-react';
+import { Button, Header, Form, Modal } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -12,6 +12,13 @@ import validatePassword from '../utils/password.utils';
 const ProfilForm = () => {
 
     const history = useHistory();
+
+    /**Modale state */
+    const [open, setOpen] = useState(false)
+    const closeModal = () => {
+        history.push('/');
+        setOpen(false)
+    };
 
     /**Hooks for form validation */
     const firstRender = useRef(true);
@@ -29,9 +36,9 @@ const ProfilForm = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault(); 
+        setOpen(true);
         axios.post('add', userProfil)
             .then((res) => {
-                history.push('/');
             })
             .catch((err) => {
                 console.log(err)
@@ -111,7 +118,16 @@ const ProfilForm = () => {
                         </Link>
                 </div>
             </Form>
-
+            <Modal
+                closeIcon
+                open={open}
+                onClose={closeModal}
+                onOpen={() => setOpen(true)}
+            >
+            <Modal.Content>
+                <p>Compte crée avec succès! Vous pouvez vous connecter maintenant.</p>
+            </Modal.Content>
+            </Modal>
         </div>
     );
 
