@@ -1,0 +1,58 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js start
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Invariant Violation: Script must exist
+      at invariant (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:2314:15)
+      at /usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:62386:11
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:328:14
+      at new Promise (<anonymous>)
+      at new F (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:5301:28)
+      at /usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:307:12
+      at realRunCommand (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:62471:23)
+      at action.action (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:62532:16)
+
+npm manifest: 
+  {
+    "name": "funnyquiz",
+    "version": "1.0.0",
+    "description": "Funny game built with Postgres and ReactJs",
+    "main": "index.js",
+    "scripts": {
+      "test": "jest",
+      "start_back": "npx nodemon BACK-END/index.js",
+      "start_front": "cd FRONT-END/funny-quiz && npm start ",
+      "watching": "npm run start_back && npm run start_front ",
+      "start": ""
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Stellavilar/FunnyQuiz.git"
+    },
+    "author": "Stella Vilar",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Stellavilar/FunnyQuiz/issues"
+    },
+    "homepage": "https://github.com/Stellavilar/FunnyQuiz#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
