@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c357093c.chunk.css",
+    "main.js": "/static/js/main.6f25f364.chunk.js",
+    "main.js.map": "/static/js/main.6f25f364.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.12b9f311.js",
+    "runtime-main.js.map": "/static/js/runtime-main.12b9f311.js.map",
+    "static/js/2.9a45e259.chunk.js": "/static/js/2.9a45e259.chunk.js",
+    "static/js/2.9a45e259.chunk.js.map": "/static/js/2.9a45e259.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c357093c.chunk.css.map": "/static/css/main.c357093c.chunk.css.map",
+    "static/js/2.9a45e259.chunk.js.LICENSE.txt": "/static/js/2.9a45e259.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/static/media/Fond jaune.142d9840.png",
+    "static/media/savLogo.c30833bc.png": "/static/media/savLogo.c30833bc.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12b9f311.js",
+    "static/js/2.9a45e259.chunk.js",
+    "static/css/main.c357093c.chunk.css",
+    "static/js/main.6f25f364.chunk.js"
+  ]
+}
